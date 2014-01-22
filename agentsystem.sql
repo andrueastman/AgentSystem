@@ -1,4 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `agentsystem` /*!40100 DEFAULT CHARACTER SET latin1 */;
+--this is very funny
+
 USE `agentsystem`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
