@@ -1,5 +1,4 @@
-<div id ="wrapper">
-
+<div id ="page-wrapper">
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#search').click(function(){
@@ -16,17 +15,18 @@ $(document).ready(function(){
 </script>
 	<div id="content">
 		<div id="box" class ="box">
-			<h3><?php echo $widget_title;?></h3>
-			
+			<div class="col-lg-8">
+					<h1>Agents</h1>
+				  </div>
 			<?php $this->load->view('alerts');?>
 			
-			<table>
+			<table class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
-					<th>id</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Phone</th>
-					<th>Status</th>
+					<th>id <i class="fa fa-sort"></i></th>
+					<th>Name <i class="fa fa-sort"></i></th>
+					<th>Email <i class="fa fa-sort"></i> </th>
+					<th>Phone <i class="fa fa-sort"></i></th>
+					<th>Status <i class="fa fa-sort"></i></th>
 				</thead>
 				<?php foreach($agents as $agent):?>
 				<tr>

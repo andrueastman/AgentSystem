@@ -42,12 +42,12 @@ $(document).ready(function(){
 				
 			<table class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
-					<th>id<i class="fa fa-sort"></i></th>
-					<th>Name<i class="fa fa-sort"></i></th>
-					<th>description<i class="fa fa-sort"></i></th>
-					<th>Min price<i class="fa fa-sort"></i></th>
-					<th>Max price<i class="fa fa-sort"></i></th>
-					<th>Status<i class="fa fa-sort"></i></th>
+					<th>id <i class="fa fa-sort"></i></th>
+					<th>Name <i class="fa fa-sort"></i></th>
+					<th>description <i class="fa fa-sort"></i></th>
+					<th>Min price <i class="fa fa-sort"></i></th>
+					<th>Max price <i class="fa fa-sort"></i></th>
+					<th>Status <i class="fa fa-sort"></i></th>
 				</thead>
 				<?php foreach($data as $product_item):?>
 				<tr>
