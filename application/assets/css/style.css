@@ -1,0 +1,408 @@
+/*
+	HTML Elements
+*/
+*{
+	margin:0;
+	padding:0;
+}
+img, div,a { behavior: url(http://localhost/AgentSystem/assets/css/iepngfix.htc) }
+body{
+	font-size: 12px;
+	font-family: Arial, Tahoma, Verdana;
+}
+a, a:visited{
+	text-decoration:none;
+}
+img{
+	border:0;
+	margin:1px;
+}
+p{
+	padding:3px;
+}
+h2{
+
+}
+input{
+	padding:2px;
+}
+select{
+	padding:2px;
+}
+
+/*
+	LOGIN
+*/
+
+form.login {
+	color: #000;
+	background:#fff; 
+	width:300px;
+	margin:30px auto;
+	border-radius:0.4em;
+	border:1px solid #191919;
+	overflow:hidden;
+	position:relative;
+	box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+}
+form.login h1 {
+  font-size:18px;
+  text-align:center;
+  padding:0 0;
+  border-bottom:1px solid #000;
+  position:relative;
+}
+
+form.login label {
+  display:block;
+  padding-bottom:9px;
+}
+form.login input {
+ 	width:100%;
+	padding:8px 5px;
+	background:#bcdcc2;
+	border:1px solid #222;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+	border-radius:0.3em;
+	margin-bottom:20px;
+}
+
+form.login input[type=submit] {
+	width: 100px;
+ 	padding:5px 20px;
+	border:1px solid rgba(0,0,0,0.4);
+	border-radius:0.3em;
+	background:#0184ff;
+	float:right;
+	font-weight:bold;
+	cursor:pointer;
+	font-size:13px;
+}
+
+/*
+	STRUCTURE
+*/
+#container{
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#header{
+	width:960px;
+}
+#header h2{
+margin-top:20px;
+}
+#content{
+	width:740px;
+	float:left;
+	margin:10px 0 10px 0;
+	padding:10px;
+	
+}
+#sidebar{
+	background:#FFF;
+	width:170px;
+	float:right;
+	margin:10px 0 10px 0;
+	padding:10px;
+}
+#footer{
+	clear:both;
+	padding:5px;
+	margin-top:10px;
+}
+#box h3{
+	padding:5px;
+	font-size:14px;
+}
+/*
+	TOPMENU
+*/
+#topmenu{
+	margin-top:33px;
+	width:700px;
+	float:left;
+	voice-family:inherit;
+}
+#topmenu ul{
+	list-style:none;
+	line-height:25px;
+	float: left;
+}
+#topmenu #coolMenu > li {
+    float: left;
+}
+#topmenu li{
+	display:inline;
+	padding:0px 12px;
+	text-decoration:none;
+}
+#topmenu  #coolmenu ul{
+	position:absolute;
+	display:none;
+	z-index: 999;
+}
+#topmenu #coolmenu li:hover ul{
+	display: block;
+}
+#topMenu #coolMenu li a {
+	display: block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+#topMenu #coolMenu li ul li {
+	display: block;
+	padding: 0, 0 , 0, 0;
+	height: 20px;
+	line-height: 20px;
+    text-decoration: none;
+}
+
+
+#box #options #options_menu{
+	position:absolute;
+	width: 100px;
+	display:none;
+	z-index: 999;
+}
+#box #options #options_menu ul{
+	list-style: none;
+}
+#box #options #options_menu li a{
+	display: block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+    text-decoration: none;
+
+}
+#box #options #options_menu li a:hover{
+    text-decoration: underline;
+}
+
+/*
+	SIDEBAR
+*/
+#sidebar ul{
+	list-style:none;
+	line-height:22px;
+}
+#sidebar ul li a,#sidebar ul li a:visited{
+	padding-left:19px;
+	text-decoration:none;
+	margin:0 3px;
+	display:block;
+}
+#sidebar ul li a:hover{
+	text-decoration:underline;
+}
+#sidebar ul li ul{
+	margin-left:10px;
+}
+#sidebar h3{
+	padding:2px;
+	font-size:14px;
+}
+
+/*
+
+*/
+
+.a-right{text-align:right;}
+.a-left{text-align:left;}
+.a-center{text-align:center;}
+/*
+	TABLES
+*/
+table{
+	margin:5px;
+	border-collapse: collapse;
+	table-layout:automatic;
+	width:98%;
+}
+td, th{
+	padding: 2px;
+} 
+td{
+	font-size:12px;
+}
+
+thead{
+
+}
+
+/*********************
+		Home
+*********************/
+#infowrap li{
+	display:inline:
+}
+#infobox{
+	width:365px;
+	float:left;
+	margin-top:10px;
+}
+#infobox h3{
+	padding:5px;
+	font-size:14px;
+}
+.margin-left{
+	margin-left:5px;
+}
+#rightnow .reallynow {
+	padding: 5px;
+	font-size:14px;
+}
+#rightnow h3{
+	padding:2px;
+	padding: 0 10px;
+	font-size:14px;
+}
+#rightnow .reallynow span {
+	display: block;
+	text-align: left;
+	float: left;
+	padding:0 2px;
+	font-size:14px
+}
+#rightnow .reallynow a {
+	text-decoration:none;
+	display: block;
+	text-align: right;
+	float: right;
+	padding:0 0 0 18px;
+	margin-left:4px;
+	font-weight:normal;
+	font-size:12px;
+}
+#rightnow .reallynow a:hover{
+	text-decoration:underline;
+}
+#rightnow .youhave {
+	font-size:  12px;
+	padding: 10px;
+}
+#rightnow a {
+	font-weight: bold;
+}
+
+#box span.extras{
+	float: right;
+}
+
+
+/*********************
+		Forms
+*********************/
+form{
+	padding:10px;
+	margin:0 auto;
+}
+form#form fieldset {
+	display:block;
+	padding:5px 10px 5px 10px;
+	line-height:20px;
+	margin-bottom:10px;
+}
+form#form legend {
+	font-size:12px;
+	font-weight:bold;
+	margin-bottom:5px;
+	padding:3px;
+	width:254px;
+}
+form#form label {
+	clear:left;
+	display:block;
+	float:left;
+	width:100px;
+	text-align:right;
+	padding-right:10px;
+	margin-bottom:5px;
+}
+form#form input, form#form .button {
+	padding:3px;
+	margin-bottom:5px;
+}
+form#form select {
+	margin-left:5px;
+}
+form#form textarea {
+	width:410px;
+	height:200px;
+	padding:5px;
+	overflow:auto;
+}
+form#form option {
+	background:#FFF;
+}
+form#form optgroup option {
+
+}
+form#form #button1, form#form #button2, form#form .button {
+	padding-right:5px;
+	cursor:pointer;
+	width:150px;
+	margin-left:8px;
+	font-weight:bold;
+	border:1px solid rgba(0,0,0,0.4);
+	border-radius:0.3em;
+	float:right;
+	cursor:pointer;
+	font-size:13px;
+
+}
+form#form #button1:hover, form#form #button2:hover ,form#form .button:hover{
+	background-position:center left;
+}
+
+.button{
+	padding-bottom:5px;
+	cursor:pointer;
+	border:1px solid rgba(0,0,0,0.4);
+	border-radius:0.2em;
+	float:right;
+
+}
+/*
+	ALERTS
+*/
+
+#alert{
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 20px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	border-radius: 4px;
+}
+
+#alert.alert_error{
+	background-color: #f6c8b8;
+	border-color: #eed3d7;
+	color: #b94a48;
+}
+
+#alert.alert_success{
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #468847;
+}
+#alert.alert_info{
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+	color: #3a87ad;
+}
+
+/*
+	MISCELLANEOUS
+*/
+form.product_button{
+	float: left;
+}
+.margin-right{
+	margin-right:5px;
+}
