@@ -1,6 +1,6 @@
 		
 		<div><?php $this->load->view('alerts');?></div>
-		<div class="col-md-4 col-md-offset-4 panel-body login-panel panel panel-default">
+		<div class="col-md-4 col-md-offset-3 panel-body login-panel panel panel-default">
 				<?php 
 					$def = array(
 						'id'=>'login',

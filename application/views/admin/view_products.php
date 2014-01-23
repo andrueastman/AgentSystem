@@ -1,4 +1,4 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -20,24 +20,34 @@ $(document).ready(function(){
 });
 
 </script>
-	<div id="content">
+	<div >
 	
 		<?php $this->load->view('alerts');?>
-		<div id="box" class ="box">
-				<h3>
-				<span><?php echo $widget_title;?></span>
-				<span class="extras">
-					<input type="text" value="searchword" id="search_word"/>
-					<input type="button" id="search" value="search"/>
-				<span>
-				</h3>
-			<table>
+		<div>
+				<div class="row">
+				  <div class="col-lg-8">
+					<h1>View Products</h1>
+				  </div>
+				  <div class="col-lg-4">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" value="searchword" id="search_word">
+						<span class="input-group-btn">
+						  <button class="btn btn-default" type="button" id="search" value="search"><i class="fa fa-search"></i></button>
+						</span>
+					  </div>
+					
+					
+					</div>
+				</div><!-- /.row -->
+				
+			<table class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
-					<th>id</th>
-					<th>Name</th>
-					<th>description</th>
-					<th>unit_price</th>
-					<th>Status</th>
+					<th>id <i class="fa fa-sort"></i></th>
+					<th>Name <i class="fa fa-sort"></i></th>
+					<th>description <i class="fa fa-sort"></i></th>
+					<th>Min price <i class="fa fa-sort"></i></th>
+					<th>Max price <i class="fa fa-sort"></i></th>
+					<th>Status <i class="fa fa-sort"></i></th>
 				</thead>
 				<?php foreach($data as $product_item):?>
 				<tr>
@@ -50,7 +60,7 @@ $(document).ready(function(){
 					<td id="options" class="button">Options
 						<div id="options_menu">
 						<ul>
-							<li><a href =<?php echo site_url('admin/products/edit_product').'/'.$product_item['id'];?>?>>Edit</a></li>
+							<li><a href =<?php echo site_url('admin/products/edit_product').'/'.$product_item['id'];?>?>Edit</a></li>
 							<li><a href= <?php echo site_url('admin/products/disable_product') . '/'.$product_item['id']. '/'.$product_item['Active']?>><?php echo ($product_item['Active']==0?'Enable':'Disable');?></a></li>
 						</ul>
 						</div>
@@ -60,6 +70,8 @@ $(document).ready(function(){
 				
 				<p><?php echo $links; ?></p>
 			</table>
+			<script src="<?php echo base_url('assets/js/tablesorter/jquery.tablesorter.js')?>"></script>
+			<script src="<?php echo base_url('assets/js/tablesorter/tables.js')?>"></script>
 
 		</div>
 	</div>
