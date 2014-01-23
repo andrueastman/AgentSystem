@@ -5,7 +5,14 @@
 
 <div id="alert" class="alert_error"></div>		
 
-<form action="" method="post" accept-charset="utf-8" id="form" class="form">
+<?php 
+	$data = array(
+		'id'=>'form',
+		'class'=>'form-horizontal',
+		'role' => 'form'
+	);
+	echo form_open('agent/order/create_client', $data);?>
+
 	<fieldset>
 	<legend>CLIENT INFORMATION</legend>
 	<p>
@@ -33,47 +40,9 @@
 		<input type="text" name ="company" id="company"/>
 	</p>
 	</fieldset>
-		<legend>PRODUCTS</legend>
-		<table id="product_table">
-			<tfoot>
-				<tr>
-					<td colspan= "2"></td>
-					<td><label for="subtotal">Total</label></td>
-					<td><input type="number" name="total" id="total" value="0" readonly="readonly"/></td>			
-				</tr>
-			</tfoot>
-
-			<tbody>
-			<tr id="product" class="product">
-				<td >
-					<label for ="product_id">ProductID</label>
-					<select id="product_id" name="product_id">
-						<?php foreach ($products as $product):?>
-						<option value=<?php echo $product['id']?>><?php echo $product['name']?></option>
-						<?php endforeach;?>
-					</select>
-				</td>
-
-				<td>
-					<label for ="quantity">Quantity</label>
-					<input type="number" name ="quantity" id = "quantity" value="0"/>
-				</td>
-				<td>
-					<label for="unit_price">Unit_price</label>
-					<input type ="number" name="unit_price" value="0" id="unit_price" readonly="readonly"/>
-				</td>
-				<td>
-					<label for="subtotal">Subtotal</label>
-					<input type="number" name="subtotal" id="subtotal" value="0" readonly="readonly"/>
-				</td>
-				<td> <div id="remove_row"><img alt="remove" src="<?php echo base_url().'assets/img/delete_icon.png';?>"/></div></td>
-			</tr>
-			</tbody>
-		</table>
 	<p>
-		<div id ="add_product" class= "button">Add Product</div>
 		<input id = "button1" type ="reset" value ="reset"/>
-		<div id ="submit_product" class="button">Submit</div>
+		<input type = "submit" value="Submit"/>
 	</p>
 	</fieldset>
 		<script type="text/javascript">

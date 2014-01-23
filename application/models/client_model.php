@@ -48,20 +48,19 @@
 		public function add_client(){
 			$first_name = $this->input->post('first_name');
 			$last_name = $this->input->post('last_name');
-			$slug = strtolower($first_name) . '_' . strtolower($last_name);
 			$phone_no = $this->input->post('phone_no');
 			$email = $this->input->post('email');
 			$company = $this->input->post('company');
 			$data = array(
-				'first_name'=>$first_name,
-				'last_name' => $last_name,
-				'slug'=>$slug,
-				'phone_no' =>$phone_no,
-				'email' => $email,
-				'company' =>$company,
-				'agent_id' =>$this->ion_auth->user()->row()->id
+				'Firstname'=>$first_name,
+				'Lastname' => $last_name,
+				'Phone' =>$phone_no,
+				'Email' => $email,
+				//'company' =>$company,
+				'Creator' =>$this->ion_auth->user()->row()->id,
+				'CurrentAgent' =>$this->ion_auth->user()->row()->id
 			);
-			if($this->db->insert('agentclient', $data)){
+			if($this->db->insert('clients', $data)){
 				return $this->db->insert_id();
 			}else {
 				return FALSE;

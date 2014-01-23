@@ -29,10 +29,14 @@ class Order extends Agent_Controller{
 		$this->form_validation->set_rules($rules);
 		if($this->form_validation->run() == FALSE){
 		//code for loading view of client making
+				$data['title']='ORDER';
+			$data['widget_title'] = 'Order Products';
+
+			$this->render_page('create_client', $data);
 		}else{
 			$client_id = $this->client_model->add_client();
 			if($client_id){
-				$this->render_order_page($client_id);
+				redirect('agent/order/render_order_page/'.$client_id);
 			}else{
 				$this->session->set_flashdata('alert_error','Could not create client');
 				redirect('agent/order/make_order','refresh');
@@ -42,11 +46,13 @@ class Order extends Agent_Controller{
 	
 	public function render_order_page($client_id){
 		$this->load->library('form_validation');
+		$this->load->model('product_model');
 		$this->data['title']='ORDER';
 		$this->data['widget_title'] = 'Order Products';
-		$this->data['products'] = $this->product_model->get_products();
+		$this->data['client_id'] = $client_id;
+		$this->data['products'] = $this->product_model->getProducts();
 			
-		$this->render_page('create_client', $this->data);	
+		$this->render_page('create_order_products', $this->data);	
 	}
 	
 	public function create_order($client_id){

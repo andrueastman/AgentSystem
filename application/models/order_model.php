@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-public class Order_Model extends CI_Model{
+class Order_Model extends CI_Model{
 
 /*
 * types 1 is standard, 0 is non_standard
@@ -22,7 +22,7 @@ public class Order_Model extends CI_Model{
 		}else{
 			$data= array(
 				'type'=>$type,
-				'client_id'=>client_id,
+				'client_id'=>$client_id,
 				'order_date' => $this->get_current_date(),
 				'agent' => $agent_id
 			);
@@ -44,10 +44,15 @@ public class Order_Model extends CI_Model{
 	public function add_order_product($product, $id){
 		if(empty($product)){
 			$this->session->set_flashdata('alert_error','Product is empty');
-			return false
+			return false;
 		}else{
-			$product['order_id'] = $id;
-			return $this->db->insert('order_particulars', $product)
+			$part_prod = array(
+				'order_id'=>$id,
+				'product_id' =>$product->product_id,
+				'price' =>$product->price_agreed,
+				'quantity' => $product->quantity
+			);
+			return $this->db->insert('order_particulars', $part_prod);
 		}
 	}
 	
@@ -69,7 +74,7 @@ public class Order_Model extends CI_Model{
 	public function marketer_approve($order_id,$marketer_id){
 		$data = array(
 			'marketer_id' => $marketer_id,
-			'date_marketer' => $this->get_current_date();
+			'date_marketer' => $this->get_current_date()
 			);
 		return $this->update_order($order_id, $data);
 	}
@@ -77,7 +82,7 @@ public class Order_Model extends CI_Model{
 	public function admin_approve($order_id, $admin_id){
 		$data = array(
 			'admin_id' => $admin_id,
-			'date_admin' => $this->get_current_date();
+			'date_admin' => $this->get_current_date()
 			);
 		return $this->update_order($order_id, $data);
 	}
