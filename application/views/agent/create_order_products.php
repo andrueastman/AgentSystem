@@ -1,31 +1,40 @@
-<div id="wrapper">
-<div id="content">
+<div id ="page-wrapper">
 <div id="box" class ="box">
-    	<h3><?php echo $widget_title;?></h3>
+    	<div class="row">
+          <div class="col-lg-12">
+            <h1>Product Order</h1>
+          </div>
+        </div>
 
 <div id="alert" class="alert_error"></div>		
 <form action="" method="post" accept-charset="utf-8" id="form" class="form">
-		<legend>PRODUCTS</legend>
-		<table id="product_table">
+		<table id="product_table" class="table table-bordered table-hover table-striped">
 			<tfoot>
 				<tr>
-					<td colspan= "2"></td>
+					<td colspan= "4"></td>
 					<td><label for="subtotal">Total</label></td>
 					<td><input type="number" name="total" id="total" value="0" readonly="readonly"/></td>			
 				</tr>
 
 				<tr>
-					<td colspan= "2"></td>
-					<td><label for="agreed_total">Total</label></td>
+					<td colspan= "4"></td>
+					<td><label for="agreed_total">Agreed Total</label></td>
 					<td><input type="number" name="agreed_total" id="agreed_total" value="0" readonly="readonly"/></td>			
 				</tr>
 
 			</tfoot>
 
 			<tbody>
+			<thead>
+					<th>Product</th>
+					<th class="col-sm-6">Quantity</th>
+					<th>Recommended Price</th>
+					<th>Agreed price </th>
+					<th>Subtotal </th>
+					<th>Agreed Subtotal</th>
+				</thead>
 			<tr id="product" class="product">
 				<td >
-					<label for ="product_id">ProductID</label>
 					<select id="product_id" name="product_id">
 						<?php foreach ($products as $product):?>
 						<option value=<?php echo $product['id']?>><?php echo $product['Name']?></option>
@@ -34,23 +43,18 @@
 				</td>
 
 				<td>
-					<label for ="quantity">Quantity</label>
-					<input type="number" name ="quantity" id = "quantity" value="0"/>
+					<input type="number" name ="quantity" class="col-sm-6" id = "quantity" value="0"/>
 				</td>
 				<td>
-					<label for="recommended_price">Recommended_price</label>
 					<input type ="number" name="recommended_price" value="0" id="recommended_price" readonly="readonly"/>
 				</td>
 				<td>
-					<label for="price_agreed">price_agreed</label>
 					<input type ="number" name="price_agreed" value="0" id="price_agreed"/>
 				</td>
 				<td>
-					<label for="subtotal">Recommended_Subtotal</label>
 					<input type="number" name="subtotal" id="subtotal" value="0" readonly="readonly"/>
 				</td>
 				<td>
-					<label for="subtotal_agreed">Agreed_Subtotal</label>
 					<input type="number" name="subtotal_agreed" id="subtotal_agreed" value="0" readonly="readonly"/>
 				</td>
 
@@ -59,9 +63,9 @@
 			</tbody>
 		</table>
 	<p>
-		<div id ="add_product" class= "button">Add Product</div>
-		<input id = "button1" type ="reset" value ="reset"/>
-		<div id ="submit_product" class="button">Submit</div>
+		<div id ="add_product" class="col-sm-offset-2 btn btn-default">Add Product</div>
+		<input id = "button1" type ="reset" class="col-sm-offset-2 btn btn-default" value ="reset"/>
+		<div id ="submit_product" class="btn col-sm-offset-3 btn-default">Submit</div>
 	</p>
 	
 		<script type="text/javascript">

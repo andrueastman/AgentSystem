@@ -2,7 +2,7 @@
 <div id="box" class ="box">
 		<div class="row">
           <div class="col-lg-12">
-            <h1>CLIENT INFORMATION</h1>
+            <h1>Client Information</h1>
           </div>
         </div>
 <?php $this->load->view('alerts');?>		
