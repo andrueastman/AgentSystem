@@ -1,32 +1,40 @@
 
-<div id="header">
-	<h2>Green House Agent Area</h2>
-	<nav id="topmenu" class ="topmenu">
-		<ul id="coolMenu" class ="coolMenu">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+		</div>
+
+		<ul class ="nav side-nav navbar-nav">
+			<li><img src="<?php echo base_url().'assets/img/logo3.png';?>"/></li>
 			<li><a href="<?php echo base_url()?>index.php/agent/home">Dashboard</a></li>
-			<li><a href="#">Quotation</a>
-				<ul>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Quotation</a>
+				<ul class="dropdown-menu">
 					<li><a href="<?php echo base_url()?>index.php/agent/quotation/download">Download quote</a></li>
 					<li><a href="<?php echo base_url()?>/index.php/agent/quotation/email">Email quote</a></li>
 				</ul>
 
 			</li>
-			<li><a href="#">Invoice</a>
-				<ul>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Invoice</a>
+				<ul class="dropdown-menu">
 					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view_all_invoices">View invoices</a></li>
 					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view">Generate invoices</a></li>
 				</ul>
 
 			</li>
 			<li>
-				<a href="#">Receipt</a>
-				<ul>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Receipt</a>
+				<ul class="dropdown-menu">
 					<li><a href="<?php echo base_url()?>index.php/agent/receipt/viewReceipts">View receipts</a></li>
 					<li><a href="<?php echo base_url()?>index.php/agent/receipt/createReceipt">Generate receipt</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Client</a>
-						<ul>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Client</a>
+					<ul class="dropdown-menu">
 					<li><a href="<?php echo site_url('agent/client/view_clients')?>">View clients</a></li>
 				</ul>
 			</li>
