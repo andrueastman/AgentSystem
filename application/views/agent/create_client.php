@@ -53,6 +53,13 @@
 			<input type="text" name ="company" class="form-control" id="company"/>
 		</div>
 	</div>
+		<div class="form-group">
+		<label for ="location" class="col-sm-2 control-label">Location</label>
+		<div class="col-sm-6">
+			<input type="text" name ="location" class="form-control" id="location"/>
+		</div>
+	</div>
+
 
 	<div class="form-group">
 		<div class="col-sm-10">

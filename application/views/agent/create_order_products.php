@@ -33,6 +33,9 @@
 					<th>Subtotal </th>
 					<th>Agreed Subtotal</th>
 				</thead>
+			<tr>
+				<input type="hidden" name="type" value="1"/>
+			</tr>
 			<tr id="product" class="product">
 				<td >
 					<select id="product_id" name="product_id">
@@ -115,7 +118,6 @@
 				var ts = $(this).closest('tr');
 				var quantity = ts.find('#quantity').val();
 				var price_agreed = ts.find('#price_agreed').val();
-				
 				ts.find('#subtotal_agreed').val(quantity * price_agreed);
 				calculate_total();
 			});
@@ -145,12 +147,15 @@
 					product_order++;
 					products.push(row);
 				});
+				var order_type;
+				if($('#agreed_total').val()< $('#total').val()) order_type =0;
+				else order_type = 1;
 				
 				$.ajax({
 					url:"<?php echo site_url('agent/order/create_order/'.$client_id);?>",
 					type:"post",
 					data:{
-					type: 1,
+					type: order_type,
 					products : JSON.stringify(products),
 					total: $('#agreed_total').val()
 					},
