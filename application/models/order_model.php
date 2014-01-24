@@ -93,11 +93,12 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function is_approved($order_id){
-		$this->db->select('admin_id','marketer_id')->from('orders')->where('id', $order_id);
+		$this->db->select('admin_id, marketer_id')->from('orders')->where('id', $order_id);
 		$result = $this->db->get();
 		$data = $result->row_array();
-		if($data['admin_id']!=NULL && $data['marketer_id']!=NULL )
+		if($data['admin_id']!=NULL && $data['marketer_id']!=NULL ){
 			return TRUE;
+			}
 		else return FALSE;
 	}
 	
