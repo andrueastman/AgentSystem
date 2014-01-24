@@ -1,9 +1,11 @@
-<div id="wrapper">
-<div id="content">
+<div id="page-wrapper">
 <div id="box" class ="box">
-    	<h3><?php echo $widget_title;?></h3>
-
-<div id="alert" class="alert_error"></div>		
+		<div class="row">
+          <div class="col-lg-12">
+            <h1>CLIENT INFORMATION</h1>
+          </div>
+        </div>
+<?php $this->load->view('alerts');?>		
 
 <?php 
 	$data = array(
@@ -13,40 +15,53 @@
 	);
 	echo form_open('agent/order/create_client', $data);?>
 
-	<fieldset>
-	<legend>NEW CLIENT
 	<a href="<?php echo site_url('agent/order/existing_client');?>">Existing Client</a>
-	</legend>
-	<p>
-		<label for ="first_name">First Name</label>
-		<input type="text" name ="first_name" id="first_name"/>
-	</p>
-		<p>
-		<label for ="last_name">Last Name</label>
-		<input type="text" name ="last_name" id="last_name"/>
-	</p>
-		<p>
-		<label for ="phone_no">Phone no</label>
-		<input type="text" name ="phone_no" id="phone_no"/>
-	</p>
-	<p>
-		<label for ="email">Email</label>
-		<input type="text" name ="email" id="email"/>
-	</p>
-	<p>
-		<label for ="postal">Postal Address</label>
-		<input type="text" name ="postal" id="postal"/>
-	</p>
-	<p>
-		<label for ="company">Company</label>
-		<input type="text" name ="company" id="company"/>
-	</p>
-	</fieldset>
-	<p>
-		<input id = "button1" type ="reset" value ="reset"/>
-		<input type = "submit" value="Submit"/>
-	</p>
-	</fieldset>
+	
+	<div class="form-group">
+		<label for ="first_name" class="col-sm-2 control-label">First Name</label>
+		<div class="col-sm-6">
+			<input type="text" name ="first_name" class="form-control" id="first_name"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for ="last_name" class="col-sm-2 control-label">Last Name</label>
+		<div class="col-sm-6">
+			<input type="text" name ="last_name" class="form-control" id="last_name"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for ="phone_no" class="col-sm-2 control-label">Phone no</label>
+		<div class="col-sm-6">	
+			<input type="text" name ="phone_no" class="form-control" id="phone_no"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for ="email" class="col-sm-2 control-label">Email</label>
+		<div class="col-sm-6">
+			<input type="text" name ="email" class="form-control" id="email"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for ="postal" class="col-sm-2 control-label">Postal Address</label>
+		<div class="col-sm-6">
+			<input type="text" name ="postal" class="form-control" id="postal"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for ="company" class="col-sm-2 control-label">Company</label>
+		<div class="col-sm-6">
+			<input type="text" name ="company" class="form-control" id="company"/>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input id = "button1" type ="reset" class="btn btn-default col-sm-offset-1 " value ="reset"/>
+
+			<input type = "submit" class="btn btn-default col-sm-offset-2 " value="Submit"/>
+		</div>
+	</div>
+	
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$('#product_id').prop('selectedIndex', -1);
