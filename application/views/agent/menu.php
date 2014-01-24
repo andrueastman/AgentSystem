@@ -19,14 +19,11 @@
 				</ul>
 
 			</li>
-
-			<li><a href="<?php echo site_url('agent/order/create_client');?>">Make Order</a>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Invoice</a>
 				<ul class="dropdown-menu">
 					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view_all_invoices">View invoices</a></li>
 					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view">Generate invoices</a></li>
 				</ul>
-
 
 			</li>
 			<li>

@@ -2,7 +2,7 @@
 <div id="box" class ="box">
 		<div class="row">
           <div class="col-lg-12">
-            <h1>CLIENT INFORMATION</h1>
+            <h1>Client Information</h1>
           </div>
         </div>
 <?php $this->load->view('alerts');?>		
@@ -15,7 +15,7 @@
 	);
 	echo form_open('agent/order/create_client', $data);?>
 
-	<a href="<?php echo site_url('agent/order/existing_client');?>">Existing Client</a>
+	
 	
 	<div class="form-group">
 		<label for ="first_name" class="col-sm-2 control-label">First Name</label>
