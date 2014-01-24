@@ -16,6 +16,11 @@
 		<input type="number" name ="invoice_id"/>
 	</p>
 	<p>
+		<label for ="type">Type</label>
+		<input type="text" name ="type"/>
+	</p>
+
+	<p>
 		<label for ="amount">Amount</label>
 		<input type="number" name ="amount"/>
 	</p>

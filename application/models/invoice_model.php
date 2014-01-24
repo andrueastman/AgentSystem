@@ -10,7 +10,8 @@ class Invoice_Model extends CI_Model{
 	}
 	///made with orders in mind
 	
-	public function create_invoice($order_id, $total){
+	public function create_invoice($data){
+		return $this->db->insert('invoices', $data);
 	
 	}
 	public function exists($order_id){
@@ -82,18 +83,30 @@ class Invoice_Model extends CI_Model{
 	}
 	
 	public function get_company_details(){
-		$result = $this->db->get('company_details');
-		return $result->row_array();
+		$company = array(
+			'logo' => 'assets/img/logo3.png',
+			'name' =>'Ujamaa',
+			'physical_location'=>'Nairobi Bruce House',
+			'phone' => '0712345678',
+			'postal' => 'P.O Box 12342',
+			'city' =>'Nairobi',
+			'country' => 'Kenya',
+			'email'=>'ádmin@admin.com',
+			'bankname' => 'Equity Bank',
+			'bankdetails' => 'Bruce Hse',
+			'account_no' => '211234453334'
+		);
+		return $company;
 	}
 	
 	public function get_client_info($invoice_id = FALSE){
 		if($invoice_id == FALSE){
-			$result = $this->db->query('select * from agentclient left join invoice on invoice.client_id = 
-agentclient.id where invoice.id='.$this->invoice_id);
+			$result = $this->db->query('select * from clients join orders on orders.client_id = clients.id
+join invoices on invoices.order_id = orders.id where invoices.id = '.$this->invoice_id);
 			return $result->row_array();
 		}else{
-			$result = $this->db->query('select * from agentclient left join invoice on invoice.client_id = 
-agentclient.id where invoice.id='.$invoice_id);
+			$result = $this->db->query('select * from clients join orders on orders.client_id = clients.id
+join invoices on invoices.order_id = orders.id where invoices.id = '.$invoice_id);
 			return $result->row_array();		
 		}
 	}
@@ -104,8 +117,8 @@ agentclient.id where invoice.id='.$invoice_id);
 invoiceproducts.product_id = products.id where invoiceproducts.invoice_id='.$this->invoice_id);
 			return $result->result_array();
 		}else{
-			$result = $this->db->query('select * from invoiceproducts left join products on 
-invoiceproducts.product_id = products.id where invoiceproducts.invoice_id='.$invoice_id);
+			$result = $this->db->query('select * from order_particulars join products on 
+order_particulars.product_id = products.id join orders on order_particulars.order_id=orders.id join invoices on invoices.order_id = orders.id where invoices.id='.$invoice_id);
 			return $result->result_array();
 		}
 	
@@ -164,7 +177,7 @@ agentclient.phone_no,agentclient.email, invoice.client_id from invoice left join
 	
 	public function get_invoice_total($invoice_id){
 		$this->db->select('total');
-		$this->db->from('invoice');
+		$this->db->from('invoices');
 		$this->db->where('id',$invoice_id);
 
 		$query = $this->db->get();
@@ -173,7 +186,7 @@ agentclient.phone_no,agentclient.email, invoice.client_id from invoice left join
 	}
 	
 	public function get_invoice_date_created($invoice_id){
-		$this->db->select('date_created')->from('invoice')->where('id', $invoice_id);
+		$this->db->select('date_created')->from('invoices')->where('id', $invoice_id);
 		
 		$query= $this->db->get();
 		$total = $query->row_array();
@@ -181,11 +194,11 @@ agentclient.phone_no,agentclient.email, invoice.client_id from invoice left join
 	}
 	
 	public function get_invoice_date_due($invoice_id){
-		$this->db->select('date_due')->from('invoice')->where('id', $invoice_id);
+		$this->db->select('date_created')->from('invoices')->where('id', $invoice_id);
 		
 		$query= $this->db->get();
 		$total = $query->row_array();
-		return $total['date_due'];
+		return $total['date_created'];
 	}
 
 	

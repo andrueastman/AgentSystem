@@ -93,11 +93,12 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function is_approved($order_id){
-		$this->db->select('admin_id','marketer_id')->from('orders')->where('id', $order_id);
+		$this->db->select('admin_id, marketer_id')->from('orders')->where('id', $order_id);
 		$result = $this->db->get();
 		$data = $result->row_array();
-		if($data['admin_id']!=NULL && $data['marketer_id']!=NULL )
+		if($data['admin_id']!=NULL && $data['marketer_id']!=NULL ){
 			return TRUE;
+			}
 		else return FALSE;
 	}
 	
@@ -138,8 +139,10 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function get_order_total($order_id){
-		$result = $this->db->get('sum(price*quantity) as total')
-							->where(array('order_id'=>$order_id));
+		$this->db->select('sum(price*quantity) as total')
+				->from('order_particulars')
+				->where(array('order_id'=>$order_id));
+		$result = $this->db->get();
 		$data = $result->row_array();
 		return $data['total'];
 	}
@@ -147,7 +150,7 @@ class Order_Model extends CI_Model{
 	public function get_invoice_data($order_id){
 		$data = array(
 			'order_id' =>$order_id,
-			'date_created' => $this->get_current_time(),
+			'date_created' => $this->get_current_date(),
 			'total' => $this->get_order_total($order_id)
 			);
 		return $data;

@@ -19,8 +19,8 @@ class Receipt extends Agent_Controller{
 		$this->load->helper('pdf');
 		
 		$invoice_id = $this->receipt_model->get_invoice_id($receipt_id);
-				$this->data['receipt_id'] = sprintf('%1$03d',$receipt_id);
-		$this->data['company'] = $this->invoice_model->get_company_details();
+		$this->data['receipt_id'] = sprintf('%1$03d',$receipt_id);
+		//$this->data['company'] = $this->invoice_model->get_company_details();
 		$this->data['client'] = $this->invoice_model->get_client_info($invoice_id);
 		$this->data['receipt'] = $this->receipt_model->get_receipt_details($receipt_id);
 			//	$this->data['date_created'] = date('m-d-y', strtotime($this->invoice_model->get_invoice_date_created($invoice_id)));
@@ -34,6 +34,7 @@ class Receipt extends Agent_Controller{
 		$this->load->model('receipt_model');
 		$invoice_id = $this->receipt_model->get_invoice_id($receipt_id);
 		$this->data['receipt_id'] = sprintf('%1$03d',$receipt_id);
+		
 		$this->data['company'] = $this->invoice_model->get_company_details();
 		$this->data['client'] = $this->invoice_model->get_client_info($invoice_id);
 		$this->data['receipt'] = $this->receipt_model->get_receipt_details($receipt_id);
@@ -74,7 +75,7 @@ class Receipt extends Agent_Controller{
 				$this->session->set_flashdata('alert_success','Receipt added');
 				redirect('agent/receipt/test_reporting/'.$receipt_id,'refresh');			
 			}else{
-				$this->session->set_flashdata('alert_error','Could not create receipt');
+			//	$this->session->set_flashdata('alert_error','Could not create receipt');
 				redirect('agent/receipt/createReceipt','refresh');			
 			}
 		}

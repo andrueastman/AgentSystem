@@ -5,20 +5,35 @@ class Receipt_Model extends CI_Model{
 	}
 	
 	public function add_receipt(){
-		$data = array(
-			'invoice_id' =>$this->input->post('invoice_id'),
-			'amount' => $this->input->post('amount'),
-			'date_paid' =>$this->get_current_date()
-		);
-		if($this->db->insert('receipt',$data)){
-			return $this->db->insert_id();
+		$invoice_id = $this->input->post('invoice_id');
+		if($this->check_invoice_available($invoice_id)){
+			$data = array(
+				'invoice_id' =>$invoice_id,
+				'amount' => $this->input->post('amount'),
+				'type' =>$this->input->post('type'),
+				'date_paid' =>$this->get_current_date()
+			);
+			if($this->db->insert('receipts',$data)){
+				return $this->db->insert_id();
+			}else{
+				return false;
+			}
 		}else{
-			return false;
+			$this->session->set_flashdata('alert_error','The invoice you put does not exist');
+			return FALSE;
 		}		
 	}
 	
+	private function check_invoice_available($invoice_id){
+		$this->db->select('id')->from('invoices')->where('id',$invoice_id);
+		$result = $this->db->count_all_results();
+		if($result>0)return TRUE;
+		else return FALSE;
+	}
+	
 	public function get_receipt_details($receipt_id){
-		$result = $this->db->query('select * from receipt where id='.$receipt_id);
+		$this->db->where('id', $receipt_id);
+		$result = $this->db->get('receipts');
 		return $result->row_array();
 	}
 	
@@ -33,9 +48,9 @@ class Receipt_Model extends CI_Model{
 	}
 	
 	public function get_invoice_id($receipt_id){
-		$result =$this->db->query('select invoice_id from receipt where id='.$receipt_id);
-		$invoice_id = $result->row_array();	
-		return $invoice_id['invoice_id'];
+		$result =$this->get_receipt_details($receipt_id);
+		print_r($result);
+		return $result['invoice_id'];
 	}
 	
 	public function addReceipt(){
