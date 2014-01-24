@@ -29,8 +29,8 @@ class Order extends Agent_Controller{
 		$this->form_validation->set_rules($rules);
 		if($this->form_validation->run() == FALSE){
 		//code for loading view of client making
-				$data['title']='ORDER';
-			$data['widget_title'] = 'Order Products';
+			$data['title']='ORDER';
+			$data['widget_title'] = 'CLIENT DETAILS';
 
 			$this->render_page('create_client', $data);
 		}else{
@@ -42,6 +42,43 @@ class Order extends Agent_Controller{
 				redirect('agent/order/make_order','refresh');
 			}			
 		}
+	}
+	
+	public function existing_client(){
+		$this->load->model('client_model');
+	
+		$this->load->library('form_validation');
+		$rules= array(
+				array(
+					'field'=>'first_name',
+					'label'=>'first_name',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'last_name',
+					'label'=>'last_name',
+					'rules'=>'required'
+				)
+		);
+		$this->form_validation->set_rules($rules);
+		if($this->form_validation->run() == FALSE){
+		//code for loading view of client making
+			$data['title']='ORDER';
+			$data['widget_title'] = 'CLIENT DETAILS';
+
+			$this->render_page('search_client', $data);
+		}else{
+			$this->render_search_clients_page($this->client_model->search_clients());
+		}
+	}
+	
+	public function render_search_clients_page($clients){
+		$data['title']='ORDER';
+		$data['widget_title'] = 'CLIENT DETAILS';
+
+		$data['data'] = $clients;
+		$data['links'] = '';
+		$this->render_page('view_clients', $data);
 	}
 	
 	public function render_order_page($client_id){

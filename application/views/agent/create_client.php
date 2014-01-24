@@ -14,7 +14,9 @@
 	echo form_open('agent/order/create_client', $data);?>
 
 	<fieldset>
-	<legend>CLIENT INFORMATION</legend>
+	<legend>NEW CLIENT
+	<a href="<?php echo site_url('agent/order/existing_client');?>">Existing Client</a>
+	</legend>
 	<p>
 		<label for ="first_name">First Name</label>
 		<input type="text" name ="first_name" id="first_name"/>

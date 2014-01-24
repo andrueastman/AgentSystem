@@ -11,12 +11,7 @@
 				</ul>
 
 			</li>
-			<li><a href="#">Invoice</a>
-				<ul>
-					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view_all_invoices">View invoices</a></li>
-					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view">Generate invoices</a></li>
-				</ul>
-
+			<li><a href="<?php echo site_url('agent/order/create_client');?>">Make Order</a>
 			</li>
 			<li>
 				<a href="#">Receipt</a>

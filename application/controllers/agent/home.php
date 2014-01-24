@@ -18,7 +18,7 @@ class Home extends Agent_Controller{
 		$this->load->model('memo_model');
 		$data['title'] = "Dashboard";
 		$user = $this->ion_auth->user()->row_array();
-		$data['unread_memos'] = $this->memo_model->get_count_unread($user['id']);
+		$data['unread_memos'] = 10;// $this->memo_model->get_count_unread($user['id']);
 		
 		$this->render_page('dashboard',$data);
 	}

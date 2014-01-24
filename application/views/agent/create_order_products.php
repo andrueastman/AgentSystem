@@ -23,6 +23,9 @@
 			</tfoot>
 
 			<tbody>
+			<tr>
+				<input type="number" name ="type" id = "type" value="1" readonly="readonly"/>
+			</tr>
 			<tr id="product" class="product">
 				<td >
 					<label for ="product_id">ProductID</label>
@@ -111,6 +114,10 @@
 				var ts = $(this).closest('tr');
 				var quantity = ts.find('#quantity').val();
 				var price_agreed = ts.find('#price_agreed').val();
+				if(price_agreed< ts.find('#recommended_price').val())
+					$('#type').val(0);
+				else
+					$('#type').val(1);
 				
 				ts.find('#subtotal_agreed').val(quantity * price_agreed);
 				calculate_total();
@@ -146,7 +153,7 @@
 					url:"<?php echo site_url('agent/order/create_order/'.$client_id);?>",
 					type:"post",
 					data:{
-					type: 1,
+					type: $('#type').val(),
 					products : JSON.stringify(products),
 					total: $('#agreed_total').val()
 					},

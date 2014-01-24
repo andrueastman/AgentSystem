@@ -27,10 +27,6 @@ $(document).ready(function(){
 		<div id="box" class ="box">
 		<h3>
 			<span><?php echo $widget_title;?></span>
-			<span class="extras">
-				<input type="text" value="searchword" id="search_word"/>
-				<input type="button" id="search" value="search"/>
-			<span>
 		</h3>
 			
 			<table>
@@ -45,16 +41,14 @@ $(document).ready(function(){
 				<?php foreach($data as $client_item):?>
 				<tr>
 					<td><?php echo $client_item['id']?></td>
-					<td><?php echo $client_item['first_name']?></td>
-					<td><?php echo $client_item['last_name']?></td>
-					<td><?php echo $client_item['phone_no']?></td>
-					<td><?php echo $client_item['email']?></td>
-					<td><?php echo $client_item['company']?></td>
-					<td><?php echo $client_item['postal']?></td>
+					<td><?php echo $client_item['Firstname']?></td>
+					<td><?php echo $client_item['Lastname']?></td>
+					<td><?php echo $client_item['Phone']?></td>
+					<td><?php echo $client_item['Email']?></td>
 					<td id="options" class="button">Options
 						<div id="options_menu">
 						<ul>
-							<li><a href =<?php echo site_url('agent/client/view_client').'/'.$client_item['id'];?>?>>Edit</a></li>
+							<li><a href =<?php echo site_url('agent/order/render_order_page/').'/'.$client_item['id'];?>>Make order</a></li>
 						</ul>
 						</div>
 					</td>

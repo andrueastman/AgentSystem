@@ -1,10 +1,20 @@
 <?php 
-	class Client_Model extends CI_Model{
-		public function __constructor(){
+class Client_Model extends CI_Model{
+	public function __constructor(){
 			$this->load->database();
 		}
 		
-		public function clients_count($search =FALSE, $agent_id = FALSE){
+	public function search_clients(){
+		$search = array(
+			'Firstname' => $this->input->post('first_name'),
+			'Lastname' => $this->input->post('last_name')
+			);
+		$this->db->like($search);
+		$result = $this->db->get('clients');
+		return $result->result_array();
+	}
+		
+	public function clients_count($search =FALSE, $agent_id = FALSE){
 			$this->db->select('id');
 			$this->db->from('agentclient');
 			if($search != FALSE){
