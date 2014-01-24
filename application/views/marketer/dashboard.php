@@ -3,7 +3,7 @@
 	<?php $this->load->view('alerts');?>
 		<div class="row">
           <div class="col-lg-12">
-            <h1>Dashboard</h1>
+            <h1>Marketer Dashboard</h1>
           </div>
         </div><!-- /.row -->
 	<?php $this->load->view('alerts');?>
