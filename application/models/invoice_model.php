@@ -86,12 +86,12 @@ class Invoice_Model extends CI_Model{
 		$company = array(
 			'logo' => 'assets/img/logo3.png',
 			'name' =>'Ujamaa',
-			'physical_location'=>'Nairobi Bruce House',
-			'phone' => '0712345678',
-			'postal' => 'P.O Box 12342',
+			'physical_location'=>'Bruce House 14th Flr',
+			'phone' => '+254 700 481 470',
+			'postal' => 'P.O Box 60241 - 00200',
 			'city' =>'Nairobi',
 			'country' => 'Kenya',
-			'email'=>'ádmin@admin.com',
+			'email'=>'ujamaakenya@gmail.com',
 			'bankname' => 'Equity Bank',
 			'bankdetails' => 'Bruce Hse',
 			'account_no' => '211234453334'

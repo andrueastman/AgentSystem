@@ -1,5 +1,4 @@
-<div id="wrapper">
-<div id="content">
+<div id="page-wrapper">
 <div id="box" class ="box">
     	<h3><?php echo $widget_title;?></h3>
 
@@ -8,25 +7,34 @@
 <?php 
 	$data = array(
 		'id'=>'form',
-		'class'=>'form'
+		'class'=>'form-horizontal',
+		'role' => 'form'
 	);
 	echo form_open('agent/receipt/createReceipt', $data);?>
-	<p>
-		<label for ="invoice_id">InvoiceID</label>
-		<input type="number" name ="invoice_id"/>
-	</p>
-	<p>
-		<label for ="type">Type</label>
-		<input type="text" name ="type"/>
-	</p>
+	<div class="form-group">
+		<label for ="invoice_id" class="col-sm-2 control-label">InvoiceID</label>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" name ="invoice_id"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for ="type" class="col-sm-2 control-label">Type</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name ="type"/>
+		</div>
+	</div>
 
-	<p>
-		<label for ="amount">Amount</label>
-		<input type="number" name ="amount"/>
-	</p>
-	<p>
-		<input type ="submit" value="submit"/>
-	</p>
+	<div class="form-group">
+		<label for ="amount" class="col-sm-2 control-label">Amount</label>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" name ="amount"/>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-sm-10">
+			<input type ="submit" class="btn btn-default col-sm-offset-2" value="submit"/>
+	</div>
 
 
 	</form>
