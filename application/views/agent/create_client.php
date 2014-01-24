@@ -2,7 +2,7 @@
 <div id="box" class ="box">
 		<div class="row">
           <div class="col-lg-12">
-            <h1>Client Information</h1>
+            <h3>Enter new Client Information</h3>
           </div>
         </div>
 <?php $this->load->view('alerts');?>		
@@ -15,7 +15,7 @@
 	);
 	echo form_open('agent/order/create_client', $data);?>
 
-		<a href="<?php echo site_url('agent/order/existing_client');?>">Existing Client</a>
+		
 	
 	<div class="form-group">
 		<label for ="first_name" class="col-sm-2 control-label">First Name</label>
@@ -66,6 +66,7 @@
 			<input id = "button1" type ="reset" class="btn btn-default col-sm-offset-1 " value ="reset"/>
 
 			<input type = "submit" class="btn btn-default col-sm-offset-2 " value="Submit"/>
+			<a class="btn btn-default col-sm-offset-2" href="<?php echo site_url('agent/order/existing_client');?>">Existing Client</a>
 		</div>
 	</div>
 	
