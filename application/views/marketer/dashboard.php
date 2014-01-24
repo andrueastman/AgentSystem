@@ -1,70 +1,169 @@
 
-<div id = "wrapper">
-	<div id="content">
-	
+<div id = "page-wrapper">
 	<?php $this->load->view('alerts');?>
-	
-		  <div id="rightnow">
-			<h3 class="reallynow">
-				<span>Right Now</span>
-				<a href="#" class="add">Add New Product</a>
-				<a href="#" class="app_add">Some Action</a>
-				<br />
-			</h3>
-			<p class="youhave">You have <a href="<?php echo site_url('admin/records/view_invoices');?>"><?php echo $new_orders;?> new orders</a>
-			</p>
-	  </div>
+		<div class="row">
+          <div class="col-lg-12">
+            <h1>Dashboard</h1>
+          </div>
+        </div><!-- /.row -->
+	<?php $this->load->view('alerts');?>
+	<div class="alert alert-info alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<!--You have <a href="<?php echo site_url('admin/records/view_invoices');?>"><?php echo $new_orders;?> new orders</a>-->
+              </div>
 
-	<div id ="infowrap">
-		<div id ="infobox">
-			<h3>Latest quotations</h3>
-			<table>
-				<thead>
-					<th>Status</th>
-					<th>Due date</th>
-					<th>Quote</th>
-					<th>Client</th>
-				</thead>
-				<td><a href="#">view all</a></td>
-			</table>
-		</div>
-		
-		<div id ="infobox" class ="margin-left">
-			<h3>Latest Receipts</h3>
-			<table>
-				<thead>
-					<th>Status</th>
-					<th>Date</th>
-					<th>Invoice</th>
-					<th>Client</th>
-				</thead>
-				<td><a href="#">view all</a></td>
-			</table>
-		</div>
-		<div id ="infobox">
-			<h3>Latest Client</h3>
-			<table>
-				<thead>
-					<th>Status</th>
-					<th>Due date</th>
-					<th>Invoice</th>
-					<th>Client</th>
-				</thead>
-				<td><a href="#">view all</a></td>
-			</table>
-		</div>
-		<div id ="infobox" class = "margin-left">
-			<h3>Popular products</h3>
-			<table>
-				<thead>
-					<th>ProductId</th>
-					<th>ProductName</th>
-					<th>UnitPrice</th>
-				</thead>
-				<td><a href="#">view all</a></td>
-			</table>
-		</div>
 
-		</div>
-	</div>
+	<div class="row">
+						  <div class="col-lg-4">
+							<div class="panel panel-info">
+							  <div class="panel-heading">
+								<div class="row">
+								  <div class="col-xs-6">
+									<i class="fa fa-comments fa-5x"></i>
+								  </div>
+								  <div class="col-xs-6 text-right">
+									<p class="announcement-heading">456</p>
+									<p class="announcement-text">Messages</p>
+								  </div>
+								</div>
+							  </div>
+							  
+							  <a href="#">
+								<div class="panel-footer announcement-bottom">
+								  <div class="row">
+									<div class="col-xs-6">
+									  View Messages 
+									</div>
+									<div class="col-xs-6 text-right">
+									  <i class="fa fa-arrow-circle-right"></i>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</div>
+						  </div>
+						  
+						  
+						  <div class="col-lg-4">
+							<div class="panel panel-warning">
+							  <div class="panel-heading">
+								<div class="row">
+								  <div class="col-xs-6">
+									<i class="fa fa-check fa-5x"></i>
+								  </div>
+								  <div class="col-xs-6 text-right">
+									<p class="announcement-heading">12</p>
+									<p class="announcement-text">Pending Orders</p>
+								  </div>
+								</div>
+							  </div>
+							  <a href="#">
+								<div class="panel-footer announcement-bottom">
+								  <div class="row">
+									<div class="col-xs-6">
+									  Complete Orders
+									</div>
+									<div class="col-xs-6 text-right">
+									  <i class="fa fa-arrow-circle-right"></i>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</div>
+						  </div>
+						  <div class="col-lg-4">
+							<div class="panel panel-danger">
+							  <div class="panel-heading">
+								<div class="row">
+								  <div class="col-xs-6">
+									<i class="fa fa-tasks fa-5x"></i>
+								  </div>
+								  <div class="col-xs-6 text-right">
+									<p class="announcement-heading">18</p>
+									<p class="announcement-text">Overdue Orders</p>
+								  </div>
+								</div>
+							  </div>
+							  
+							  
+							  <a href="#">
+								<div class="panel-footer announcement-bottom">
+								  <div class="row">
+									<div class="col-xs-6">
+									  View Orders
+									</div>
+									<div class="col-xs-6 text-right">
+									  <i class="fa fa-arrow-circle-right"></i>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</div>
+						  </div>
+						  
+						  
+						 
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-4">
+							<div class="panel panel-success">
+							  <div class="panel-heading">
+								<div class="row">
+								  <div class="col-xs-6">
+									<i class="fa fa-check fa-5x"></i>
+								  </div>
+								  <div class="col-xs-6 text-right">
+									<p class="announcement-heading">56</p>
+									<p class="announcement-text">Clients</p>
+								  </div>
+								</div>
+							  </div>
+							  
+							  
+							  <a href="#">
+								<div class="panel-footer announcement-bottom">
+								  <div class="row">
+									<div class="col-xs-6">
+									  Manage Clients
+									</div>
+									<div class="col-xs-6 text-right">
+									  <i class="fa fa-arrow-circle-right"></i>
+									</div>
+								  </div>
+								</div>
+							  </a>
+							</div>
+					</div>
+						  
+						
+							<div class="col-lg-4">
+								<div class="panel panel-info">
+								  <div class="panel-heading">
+									<div class="row">
+									  <div class="col-xs-6">
+										<i class="fa fa-check fa-5x"></i>
+									  </div>
+									  <div class="col-xs-6 text-right">
+										<p class="announcement-heading">56</p>
+										<p class="announcement-text">Payments</p>
+									  </div>
+									</div>
+								  </div>
+								  
+								  
+								  <a href="#">
+									<div class="panel-footer announcement-bottom">
+									  <div class="row">
+										<div class="col-xs-6">
+										  View Receipts
+										</div>
+										<div class="col-xs-6 text-right">
+										  <i class="fa fa-arrow-circle-right"></i>
+										</div>
+									  </div>
+									</div>
+								  </a>
+							</div>
+					</div>
 </div>
