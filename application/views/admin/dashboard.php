@@ -3,7 +3,7 @@
 	<?php $this->load->view('alerts');?>
 		<div class="row">
           <div class="col-lg-12">
-            <h1>Dashboard</h1>
+            <h1>Admin Dashboard</h1>
           </div>
         </div><!-- /.row -->
 			<div class="alert alert-info alert-dismissable">
