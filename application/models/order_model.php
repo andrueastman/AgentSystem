@@ -15,6 +15,11 @@ class Order_Model extends CI_Model{
 		$this->load->database();
 	}
 		
+	public function get_orders($conditions= array()){
+		$this->db->where($conditions);
+		return $this->db->get('orders')->result_array();
+	}
+	
 	public function make_order($type, $client_id, $agent_id, $products){
 		if(empty($products)){
 			$this->session->set_flashdata('alert_error','No products in the order made');
@@ -88,8 +93,8 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function is_approved($order_id){
-		$result = $this->db->get('admin_id','marketer_id')
-							->where(array('order_id'=>order_id));
+		$this->db->select('admin_id','marketer_id')->from('orders')->where('id', $order_id);
+		$result = $this->db->get();
 		$data = $result->row_array();
 		if($data['admin_id']!=NULL && $data['marketer_id']!=NULL )
 			return TRUE;
@@ -105,6 +110,11 @@ class Order_Model extends CI_Model{
 		return $this->update_order($order_id, $data);
 	}
 	
+	public function count_admin_unhandled_orders(){
+		$this->db->where('admin_id', null);
+		$this->db->from('orders');
+		return $this->db->count_all_results();
+	}
 	//counts to enable notification to various levels
 	public function count_orders(){
 	

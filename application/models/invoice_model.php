@@ -13,6 +13,13 @@ class Invoice_Model extends CI_Model{
 	public function create_invoice($order_id, $total){
 	
 	}
+	public function exists($order_id){
+		$this->db->select('order_id')->from('invoices')->where('order_id',$order_id);
+		$result = $this->db->get();
+		if($result->num_rows()==1)
+			return TRUE;
+		return FALSE;
+	}
 	
 	///made with orders in mind
 	public function add_invoice_products(){

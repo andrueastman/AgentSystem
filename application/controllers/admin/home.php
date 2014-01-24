@@ -8,11 +8,11 @@ class Home extends Admin_Controller {
 
 	
     function index() {
-		//$this->load->model('invoice_model');
+		$this->load->model('order_model');
 		
 		$this->data['title']='CREATE USER';
 		$this->data['widget_title'] = 'User Details';
-		$this->data['new_orders'] = 10;//$this->invoice_model->get_count_unhandled_invoices();
+		$this->data['new_orders'] = $this->order_model->count_admin_unhandled_orders();
 		
 		$this->render_page('dashboard', $this->data);
     }

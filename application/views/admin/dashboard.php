@@ -8,7 +8,7 @@
         </div><!-- /.row -->
 			<div class="alert alert-info alert-dismissable">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					You have <a href="<?php echo site_url('admin/records/view_invoices');?>"><?php echo $new_orders;?> new orders</a>
+					You have <a href="<?php echo site_url('admin/order/view_unhandled');?>"><?php echo $new_orders;?> yet to be accepted</a>
               </div>
 
 	 
