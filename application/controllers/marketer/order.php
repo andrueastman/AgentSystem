@@ -14,8 +14,19 @@ class Order extends Marketer_Controller{
 		}else{
 			$this->session->set_flashdata('alert_error','Failed to approve');
 		}
-	
+		redirect('marketer/order/view_unhandled','refresh');
 	}
+	public function view_unhandled(){
+		$this->load->model('order_model');
+		
+		$condition = array(
+			'marketer_id' => NULL,
+			'agentlinks.marketer' =>$this->the_user->id
+			);
+		$data['data'] = $this->order_model->get_orders($condition);
+		$this->render_page('view_orders', $data);
+	}
+
 }
 
 ?>

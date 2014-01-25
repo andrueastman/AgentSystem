@@ -24,7 +24,7 @@ class User extends Admin_Controller{
 					redirect('admin/home','refresh');				
 			}else{
 				$this->session->set_flashdata('alert_error',$this->ion_auth->errors());
-				redirect('admin/agent/create_agent', 'refresh');
+				redirect('admin/user/create_user', 'refresh');
 			}		
 		}
 	}

@@ -13,7 +13,10 @@
 		'class'=>'form-horizontal',
 		'role' => 'form'
 	);
-	echo form_open('admin/user/create_user', $data);?>
+	echo form_open('marketer/agent/create_agent', $data);?>
+	
+	<input type ="hidden"  name="group" value= "3"/>
+	<input type ="hidden"  name="marketer" value= "<?php echo $this->ion_auth->user()->row()->id;?>"/>
 	<div class="form-group">
 		<label for="first_name" class="col-sm-2 control-label">First name</label>
 		<div class="col-sm-6">

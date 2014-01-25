@@ -15,9 +15,9 @@ class Order_Model extends CI_Model{
 		$this->load->database();
 	}
 		
-	public function get_orders($conditions= array()){
-		$this->db->where($conditions);
-		return $this->db->get('orders')->result_array();
+	public function get_orders($conditions= array()){	
+		$this->db->select('orders.id as id, orders.cancelled as cancelled')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')->where($conditions);
+		return $this->db->get()->result_array();
 	}
 	
 	public function make_order($type, $client_id, $agent_id, $products){
@@ -115,6 +115,13 @@ class Order_Model extends CI_Model{
 		$this->db->where('admin_id', null);
 		$this->db->from('orders');
 		return $this->db->count_all_results();
+	}
+	public function count_marketer_unhandled_orders(){
+	//orders made by agent agents belon to marketers
+		$id = $this->ion_auth->user()->row()->id;
+		$this->db->select('*')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')
+				->where('agentlinks.marketer',$id)->where('orders.marketer_id', NULL);
+		return $this->db->count_all_results();	
 	}
 	//counts to enable notification to various levels
 	public function count_orders(){

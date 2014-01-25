@@ -3,6 +3,7 @@ class Agent extends Marketer_Controller{
 	public function create_agent(){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('user_model');
 
 		$this->form_validation->set_rules('first_name', 'first_name', 'required');		
 		
@@ -17,12 +18,13 @@ class Agent extends Marketer_Controller{
 		}
 		
 		else{
-			if($this->register()){
-				$this->session->set_flashdata('alert_success',$this->ion_auth->messages());
-				redirect('admin/home','refresh');
+			if($user_id = $this->user_model->register()){
+					$this->user_model->add_marketer($user_id);
+					$this->session->set_flashdata('alert_success',$this->ion_auth->messages());
+					redirect('marketer/home','refresh');				
 			}else{
 				$this->session->set_flashdata('alert_error',$this->ion_auth->errors());
-				redirect('admin/agent/create_agent', 'refresh');
+				redirect('marketer/agent/create_agent', 'refresh');
 			}		
 		}
 	}
@@ -46,23 +48,6 @@ class Agent extends Marketer_Controller{
 		}
 		redirect('admin/agent/view_agents','refresh');
 	}
-	//since I use ion_auth library model function are used here
 	
-	public function register(){
-		$first_name = strtolower($this->input->post('first_name'));
-		$username = strtolower($first_name) . ' ' . strtolower($this->input->post('last_name'));
-		$email    = strtolower($this->input->post('email'));
-		$password = $first_name;
-		
-		$group = array('3');
-		
-		$additional_data = array(
-			'first_name' => $this->input->post('first_name'),
-			'last_name'  => $this->input->post('last_name'),
-			'company'    => $this->input->post('company'),
-			'phone'      => $this->input->post('phone'),
-		);
-		return $this->ion_auth->register($username, $password, $email, $additional_data, $group);
-	}
 }
 ?>
