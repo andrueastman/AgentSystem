@@ -2,6 +2,7 @@
 <div id="content">
 <div id="box" class ="box">
     	<h3><?php echo $widget_title;?></h3>
+		<?php $this->load->view('alerts');?>
 	<p><input type="button" id="download" value ="Download Pdf"/></p>
 	<br/>
 	<br/>

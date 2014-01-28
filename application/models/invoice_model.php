@@ -12,7 +12,6 @@ class Invoice_Model extends CI_Model{
 	
 	public function create_invoice($data){
 		return $this->db->insert('invoices', $data);
-	
 	}
 	public function exists($order_id){
 		$this->db->select('order_id')->from('invoices')->where('order_id',$order_id);
@@ -49,6 +48,11 @@ class Invoice_Model extends CI_Model{
 		}
 	}
 	
+	public function get_total($invoice_id){
+		$this->db->select('total')->where('id',$invoice_id);
+		$result = $this->db->get('invoices')->row_array();
+		return $result['total'];
+	}
 	public function get_current_date(){
 		$this->db->select('now() as date');
 		$result =$this->db->get()->row_array();
@@ -199,6 +203,11 @@ agentclient.phone_no,agentclient.email, invoice.client_id from invoice left join
 		$query= $this->db->get();
 		$total = $query->row_array();
 		return $total['date_created'];
+	}
+	public function get_order_id($invoice_id){
+		$this->db->select('order_id')->from('invoices')->where('id', $invoice_id);
+		$result = $this->db->get()->row_array();
+		return $result['order_id'];
 	}
 
 	

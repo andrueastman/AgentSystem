@@ -31,7 +31,7 @@
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Receipt</a>
 				<ul class="dropdown-menu">
 					<li><a href="<?php echo base_url()?>index.php/agent/receipt/viewReceipts">View receipts</a></li>
-					<li><a href="<?php echo base_url()?>index.php/agent/receipt/createReceipt">Generate receipt</a></li>
+					<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Generate receipt</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Client</a>

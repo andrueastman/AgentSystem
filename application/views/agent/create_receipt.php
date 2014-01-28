@@ -10,7 +10,7 @@
 		'class'=>'form-horizontal',
 		'role' => 'form'
 	);
-	echo form_open('agent/receipt/createReceipt', $data);?>
+	echo form_open('agent/receipt/create_receipt', $data);?>
 	<div class="form-group">
 		<label for ="invoice_id" class="col-sm-2 control-label">InvoiceID</label>
 		<div class="col-sm-6">

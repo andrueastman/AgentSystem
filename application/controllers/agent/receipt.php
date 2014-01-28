@@ -56,6 +56,51 @@ class Receipt extends Agent_Controller{
 		$this->render_page('view_receipt', $this->data);
 	}
 	
+	//add means to not accept overpayments
+	public function create_receipt(){
+		$this->load->model('receipt_model');
+		$this->load->model('invoice_model');
+		$this->load->model('order_model');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('invoice_id', 'invoice_id', 'required');
+		//$this->form_validation->set_rules('product_id', 'product_id', 'required');
+		//$this->form_validation->set_rules('quantity','quantity','required');
+		if($this->form_validation->run() == FALSE){
+			$this->data['title']='RECEIPT';
+			$this->data['widget_title'] = 'Receipt Details';
+			
+			$this->render_page('create_receipt', $this->data);
+		}
+		else{
+			if(($receipt_id=$this->receipt_model->add_receipt())){
+				$invoice_id = $this->receipt_model->get_invoice_id($receipt_id);
+				$order_id = $this->invoice_model->get_order_id($invoice_id);
+				
+				if(!$this->order_model->is_active($order_id)){
+					if($this->receipt_model->get_total_payments($invoice_id)/$this->invoice_model->get_total($invoice_id) >0.5){
+						$this->order_model->activate_order($order_id);
+						$this->session->set_flashdata('alert_success','Receipt added.... Order has been activated');
+						redirect('agent/receipt/test_reporting/'.$receipt_id,'refresh');
+					}else{
+						$this->session->set_flashdata('alert_error','Receipt added.....However amount is not enough to activate the order');
+						redirect('agent/receipt/test_reporting/'.$receipt_id,'refresh');
+					}
+				}
+				if($this->invoice_model->get_total($invoice_id)<=$this->receipt_model->get_total_payments($invoice_id)){
+					$this->session->set_flashdata('alert_success','You have completed your payments');
+					redirect('agent/receipt/test_reporting/'.$receipt_id,'refresh');
+				}
+				$this->session->set_flashdata('alert_success','Receipt added');
+				redirect('agent/receipt/test_reporting/'.$receipt_id,'refresh');			
+			}else{
+				$this->session->set_flashdata('alert_error','Could not create receipt');
+				redirect('agent/receipt/create_receipt','refresh');			
+			}
+		}
+	}
+	
 	public function createReceipt(){
 		$this->load->model('receipt_model');
 		$this->load->helper('form');

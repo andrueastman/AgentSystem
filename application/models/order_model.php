@@ -20,6 +20,11 @@ class Order_Model extends CI_Model{
 		return $this->db->get()->result_array();
 	}
 	
+	public function is_active($order_id){
+		$this->db->select('active')->from('orders')->where('id',$order_id);
+		$result = $this->db->get()->row_array();
+		return ($result['active']==0?FALSE: TRUE);
+	}
 	public function make_order($type, $client_id, $agent_id, $products){
 		if(empty($products)){
 			$this->session->set_flashdata('alert_error','No products in the order made');

@@ -11,6 +11,7 @@ class Receipt_Model extends CI_Model{
 				'invoice_id' =>$invoice_id,
 				'amount' => $this->input->post('amount'),
 				'type' =>$this->input->post('type'),
+				'confirmed' => ($this->input->post('type')=='cash'?1:0),
 				'date_paid' =>$this->get_current_date()
 			);
 			if($this->db->insert('receipts',$data)){
@@ -23,6 +24,16 @@ class Receipt_Model extends CI_Model{
 			return FALSE;
 		}		
 	}
+	
+	public function get_total_payments($invoice_id){
+		$this->db->select('sum(amount) as total')->where('confirmed',1)->where('invoice_id', $invoice_id);
+		$result = $this->db->get('receipts')->row_array();
+		return $result['total'];
+	}
+	
+	private function check_active_order(){}
+	
+	private function activate_order(){}
 	
 	private function check_invoice_available($invoice_id){
 		$this->db->select('id')->from('invoices')->where('id',$invoice_id);
@@ -49,7 +60,6 @@ class Receipt_Model extends CI_Model{
 	
 	public function get_invoice_id($receipt_id){
 		$result =$this->get_receipt_details($receipt_id);
-		print_r($result);
 		return $result['invoice_id'];
 	}
 	
