@@ -49,12 +49,18 @@ class Root_Controller extends CI_Controller{
 		
 		$links = array();
 		foreach($jobs as $job){
-			if($job['id'] == 1)
-				array_push($links, site_url('admin/home'));
-			else if ($job['id'] == 2)
-				array_push($links, site_url('marketer/home'));
-			else if($job['id'] == 3)
-				array_push($links, site_url('agent/home'));
+			if($job['id'] == 1){
+				$admin= array('title'=>'admin','url'=>site_url('admin/home'));
+				array_push($links, $admin);
+				}
+			else if ($job['id'] == 2){
+				$marketer = array('title'=>'marketer','url'=>site_url('marketer/home'));
+				array_push($links, $marketer);
+				}
+			else if($job['id'] == 3){
+				$agent = array('title'=>'agent','url'=>site_url('agent/home'));
+				array_push($links, $agent);
+				}
 		}
 	return $links;
 	}

@@ -128,6 +128,8 @@ class Order_Model extends CI_Model{
 				->where('agentlinks.marketer',$id)->where('orders.marketer_id', NULL);
 		return $this->db->count_all_results();	
 	}
+	public function get_overdue_handled_orders(){
+	}
 	//counts to enable notification to various levels
 	public function count_orders(){
 	
