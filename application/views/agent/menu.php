@@ -17,23 +17,12 @@
 					<li><a href="<?php echo base_url()?>index.php/agent/quotation/download">Download quote</a></li>
 					<li><a href="<?php echo base_url()?>/index.php/agent/quotation/email">Email quote</a></li>
 				</ul>
-
 			</li>
+			
 			<li><a href="<?php echo site_url('agent/order/create_client');?>">Make Order</a>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Invoice</a>
-				<ul class="dropdown-menu">
-					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view_all_invoices">View invoices</a></li>
-					<li><a href="<?php echo base_url()?>/index.php/agent/invoice/view">Generate invoices</a></li>
-				</ul>
-
-			</li>
-			<li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Receipt</a>
-				<ul class="dropdown-menu">
-					<li><a href="<?php echo base_url()?>index.php/agent/receipt/viewReceipts">View receipts</a></li>
-					<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Generate receipt</a></li>
-				</ul>
-			</li>
+			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Make Payment</a></li>
+			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Get invoice</a></li>
+			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Get receipt</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Client</a>
 					<ul class="dropdown-menu">
 					<li><a href="<?php echo site_url('agent/client/view_clients')?>">View clients</a></li>
