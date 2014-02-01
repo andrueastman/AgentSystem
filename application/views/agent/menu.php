@@ -21,8 +21,8 @@
 			
 			<li><a href="<?php echo site_url('agent/order/create_client');?>">Make Order</a>
 			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Make Payment</a></li>
-			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Get invoice</a></li>
-			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Get receipt</a></li>
+			<li><a href="<?php echo base_url()?>index.php/agent/invoice/find_invoice">Get invoice</a></li>
+			<li><a href="<?php echo base_url()?>index.php/agent/receipt/find_receipt">Get receipt</a></li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Client</a>
 					<ul class="dropdown-menu">
 					<li><a href="<?php echo site_url('agent/client/view_clients')?>">View clients</a></li>

@@ -1,6 +1,15 @@
 <?php
 class Invoice extends Agent_Controller{
 
+
+	public function find_invoice(){
+		$this->load->helper('form');
+		$data['title']="FIND INVOICE";
+		$data['widget_title'] ="FIND INVOICE";
+		$this->render_page('find_invoice', $data);
+	
+	}
+
 	public function test_reporting($invoice_id){
 		$this->load->model('invoice_model');
 		$this->data['title'] = 'INVOICE OPTIONS';
