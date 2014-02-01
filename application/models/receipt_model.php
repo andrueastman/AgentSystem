@@ -3,7 +3,7 @@ class Receipt_Model extends CI_Model{
 	public function __construct(){
 		$this->load->database();
 	}
-	
+//after orders added	
 	public function add_receipt(){
 		$invoice_id = $this->input->post('invoice_id');
 		if($this->check_invoice_available($invoice_id)){
@@ -30,6 +30,12 @@ class Receipt_Model extends CI_Model{
 		$result = $this->db->get('receipts')->row_array();
 		return $result['total'];
 	}
+	
+	public function get_payment_options(){
+		return $this->db->get('payment_options')->result_array();
+	}
+	//
+	
 	
 	private function check_active_order(){}
 	

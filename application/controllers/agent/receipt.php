@@ -70,6 +70,7 @@ class Receipt extends Agent_Controller{
 		if($this->form_validation->run() == FALSE){
 			$this->data['title']='RECEIPT';
 			$this->data['widget_title'] = 'Receipt Details';
+			$this->data['payment_options'] = $this->receipt_model->get_payment_options();
 			
 			$this->render_page('create_receipt', $this->data);
 		}
