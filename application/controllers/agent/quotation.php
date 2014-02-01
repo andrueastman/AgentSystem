@@ -11,6 +11,7 @@ class Quotation extends Agent_Controller{
 		
 		$this->load->helper('pdf');
 		make_invoice_pdf($html, TRUE);
+		redirect('agent/home','refresh');
 	}
 	public function email(){
 	}

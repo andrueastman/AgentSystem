@@ -22,16 +22,16 @@
 							<th class="leftalign">Product id</th>
 							<th class="rightalign">Product Name</th>
 							<th class="rightalign">Description</th>
-							<th class="rightalign">Unit price</th>
+							<th class="rightalign">Price Range</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php foreach($products as $product):?>
 						<tr>							
 							<td class="leftalign"><?php echo $product['id'];?></td>
-							<td class="leftalign"><?php echo $product['name'];?></td>
-							<td class="rightalign"><?php echo $product['description'];?></td>
-							<td class="rightalign"><?php echo $product['unit_price'];?></td>
+							<td class="leftalign"><?php echo $product['Name'];?></td>
+							<td class="rightalign"><?php echo $product['Description'];?></td>
+							<td class="rightalign"><?php echo $product['MinPrice']."-".$product['MaxPrice'];?></td>
 						</tr>
 						<?php endforeach;?>
 					</tbody>
