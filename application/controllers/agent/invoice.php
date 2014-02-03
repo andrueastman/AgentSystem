@@ -4,9 +4,32 @@ class Invoice extends Agent_Controller{
 
 	public function find_invoice(){
 		$this->load->helper('form');
-		$data['title']="FIND INVOICE";
-		$data['widget_title'] ="FIND INVOICE";
-		$this->render_page('find_invoice', $data);
+		$this->load->model('client_model');
+		
+		$this->load->library('form_validation');
+		$rules= array(
+				array(
+					'field'=>'first_name',
+					'label'=>'first_name',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'last_name',
+					'label'=>'last_name',
+					'rules'=>'required'
+				)
+		);
+
+		$this->form_validation->set_rules($rules);
+		
+		if($this->form_validation->run() == FALSE){
+			$data['title']="FIND INVOICE";
+			$data['widget_title'] ="FIND INVOICE";
+			$this->render_page('find_invoice', $data);		
+		}else{
+			$clients = $this->client_model->search_clients();
+			$this->render_page('view_clients');
+		}
 	
 	}
 

@@ -8,7 +8,7 @@
 			<div id="invoice">
 			<form id='button'>
 				<input type='button' name='print' value='Print' onClick="window.print()"/>
-				<input type='button' name='back' value="Back" onClick="window.location.href='<?php echo site_url("agent/invoice/view_all_invoices");?>'"></input>
+				<input type='button' name='back' value="Back" onClick="history.go(-1);return false;"></input>
 				<input type='button' name='Download' value="Download" onClick="window.location.href='<?php echo site_url("agent/invoice/download_invoice").'/'.$invoice_id;?>'"></a></input>
 			</form>
 

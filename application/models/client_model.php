@@ -5,11 +5,18 @@ class Client_Model extends CI_Model{
 		}
 		
 	public function search_clients(){
+		$firstname => $this->input->post('first_name');
+		$lastname => $this->input->post('last_name');
 		$search = array(
-			'Firstname' => $this->input->post('first_name'),
-			'Lastname' => $this->input->post('last_name')
+			'Firstname' => $firstname,
+			'Lastname' => $lastname
+			//'Phone' =>$this->input->post('phone_no');
 			);
-		$this->db->like($search);
+		$search2 = array(
+			'Firstname' =>$lastname,
+			'Lastname' =>$firstname
+			);
+		$this->db->like($search)->or_like($search2);
 		$result = $this->db->get('clients');
 		return $result->result_array();
 	}
