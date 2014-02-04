@@ -62,7 +62,7 @@
 				$('#form').show();
 			});
 			$('#get_invoice').click(function(){
-				window.location = ("<?php echo site_url('agent/invoice/view_invoice').'/';?>"+$('#invoice_id').val());
+				window.location = ("<?php echo site_url('agent/invoice/relink_invoice_id_to_invoice').'/';?>"+$('#invoice_id').val());
 			});
 		});
 	</script>

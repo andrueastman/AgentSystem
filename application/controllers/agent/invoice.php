@@ -37,6 +37,17 @@ class Invoice extends Agent_Controller{
 	
 	}
 	
+	public function relink_invoice_id_to_invoice($invoice_id){
+		$this->load->model('invoice_model');
+		if($this->invoice_model->invoice_exists($invoice_id)){
+			redirect ('agent/invoice/view_invoice/'.$invoice_id);
+		}else{
+			$this->session->set_flashdata('alert_error','The invoice '.$invoice_id." does not exists");
+			redirect('agent/invoice/find_invoice','refresh');
+		}
+		
+	}
+	
 	public function get_invoice_from_client_id($client_id){
 		$this->load->model('invoice_model');
 

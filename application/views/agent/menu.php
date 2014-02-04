@@ -23,6 +23,7 @@
 			<li><a href="<?php echo base_url()?>index.php/agent/receipt/create_receipt">Make Payment</a></li>
 			<li><a href="<?php echo base_url()?>index.php/agent/invoice/find_invoice">Get invoice</a></li>
 			<li><a href="<?php echo base_url()?>index.php/agent/receipt/find_receipt">Get receipt</a></li>
+			<li><a href="<?php echo base_url()?>index.php/agent/client/find_client">Get Client</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Duties</a>
 							<ul class="dropdown-menu">
 								<?php foreach ($jobs as $job):?>

@@ -14,6 +14,37 @@ class Order_Model extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
+	
+	public function get_basic_orders($condition){
+		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
+				->where($condition);
+		return $this->db->get()->result_array();
+	}
+	public function get_order_details($order_id){
+		$this->db->select('*')->from('orders')
+				->where('orders.id',$order_id);
+		return $this->db->get()->row_array();
+	}
+	public function get_order_invoice($order_id){
+		$this->db->select('*')->from('invoices')->where('invoices.order_id',$order_id);
+		return $this->db->get()->row_array();
+	}
+	public function get_order_clients($order_id){
+		$this->db->select('*')->from('clients')->join('orders','orders.client_id = clients.id')->where('orders.id', $order_id);
+		return $this->db->get()->row_array();
+	}
+	
+	public function get_order_products($order_id){
+		$this->db->select('*')->from('order_particulars')->join('products','products.id = order_particulars.product_id')->where('order_particulars.order_id',$order_id);
+		return $this->db->get()->result_array();
+	}
+	
+	public function get_order_receipts($order_id){
+		$this->db->select('receipts.id, receipts.amount, receipts.type, receipts.ref_no, receipts.confirmed,receipts.date_paid,receipts.receipient_id')
+				->from('receipts')->join('invoices','receipts.invoice_id=invoices.id')->where('invoices.order_id',$order_id);
+		return $this->db->get()->result_array();
+	}
 		
 	public function get_orders($conditions= array()){	
 		$this->db->select('orders.id as id, orders.cancelled as cancelled')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')->where($conditions);

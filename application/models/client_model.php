@@ -32,7 +32,7 @@ class Client_Model extends CI_Model{
 				$this->db->where('agent_id', $agent_id);
 			}
 			return $this->db->count_all_results();
-		}
+	}
 		
 	public function get_clients($limit=null, $start=0, $search=FALSE, $agent_id =false){
 		$limit = (is_null($limit)?$this->clients_count():$limit);
@@ -51,13 +51,13 @@ class Client_Model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-		public function getClients($agent_id =FALSE){
+	public function getClients($agent_id =FALSE){
 			$result = $this->db->get('agentclient');
 			return $result->result_array();
 		
 		}
 		
-		public function listFields($table){
+	public function listFields($table){
 		$query = $this->db->list_fields($table);
 		return $query;
 		}

@@ -20,6 +20,13 @@ class Invoice_Model extends CI_Model{
 			return TRUE;
 		return FALSE;
 	}
+	public function invoice_exists($invoice_id){
+		$this->db->select('id')->from('invoices')->where('id',$invoice_id);
+		$result = $this->db->get();
+		if($result->num_rows()==1)
+			return TRUE;
+		return FALSE;
+	}
 	public function find_client_invoices($client_id){
 		$this->db->select('invoices.order_id,orders.order_date as date_created, invoices.total,invoices.id')->from('orders')
 				->join('invoices','orders.id = invoices.order_id')->where('orders.client_id',$client_id);

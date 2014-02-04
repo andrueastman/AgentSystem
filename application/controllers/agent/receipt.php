@@ -3,6 +3,14 @@
 class Receipt extends Agent_Controller{
 
 
+	public function relink_receipt_from_receipt_id($receipt_id){
+		$this->load->model('receipt_model');
+		if($this->receipt_model->receipt_exists($receipt_id)){
+			redirect();
+		}else{
+			$this->session->set_flashdata('alert_error','That receipt id is not in the system');
+		}
+	}
 	public function get_receipt_from_invoice($invoice_id){
 		$this->load->model('receipt_model');
 		

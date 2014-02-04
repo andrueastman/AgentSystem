@@ -39,6 +39,20 @@ class Receipt_Model extends CI_Model{
 		$this->db->select('*')->from('receipts')->where($condition);
 		return $this->db->get()->result_array();
 	}
+	public function receipt_exists($receipt_id){
+		$this->db->select()->form()->where();
+		$result = $this->db->get();
+		if($result->num_rows() == 1)
+			return TRUE;
+		return FALSE;
+	}
+	
+	public function get_client_receipts($client_id){
+		$this->db->select('*')->from('receipts')->join('invoices','receipts.invoice_id = invoices.id')
+				->join('orders','invoices.order_id = orders.id')->join('clients','clients.id = orders.client_id')
+				->where('clients.id',$client_id);
+		return $this->db->get()->result_array();
+	}
 	//
 	
 	

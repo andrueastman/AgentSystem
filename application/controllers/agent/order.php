@@ -5,6 +5,30 @@ class Order extends Agent_Controller{
 		parent::__construct();
 	}
 	
+	public function get_client_orders($client_id){
+		$this->load->model('order_model');
+		
+		$condition  = array('client_id' =>$client_id);
+		$data['orders'] = $this->order_model->get_basic_orders($condition);
+		$data['title']='CLIENT ORDERS';
+		$data['widget_title'] = 'CLIENT ORDERS';
+		
+		$this->render_page('order_list', $data);
+	
+	}
+	public function get_order_details($order_id){
+		$this->load->model('order_model');
+		
+		$data['order'] = $this->order_model->get_order_details($order_id);
+		$data['invoice'] = $this->order_model->get_order_invoice($order_id);
+		$data['client'] = $this->order_model->get_order_clients($order_id);
+		$data['products'] = $this->order_model->get_order_products($order_id);
+		$data['receipts'] = $this->order_model->get_order_receipts($order_id);
+		$data['title']='ORDER DETAILS';
+		$data['widget_title'] = 'ORDER DETAILS';
+
+		$this->render_page('order_details', $data);
+	}
 	public function create_client(){
 		$this->load->model('client_model');
 	

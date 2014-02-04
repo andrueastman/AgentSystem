@@ -48,8 +48,9 @@ $(document).ready(function(){
 					<td id="options" class="button">Options
 						<div id="options_menu">
 						<ul>
-							<li><a href =<?php echo site_url('agent/order/render_order_page/').'/'.$client_item['id'];?>>Make order</a></li>
-							<li><a href =<?php echo site_url('agent/invoice/get_invoice_from_client_id/').'/'.$client_item['id'];?>>Get invoices</a></li>
+							<li><a href =<?php echo site_url('agent/order/render_order_page').'/'.$client_item['id'];?>>Make order</a></li>
+							<li><a href =<?php echo site_url('agent/invoice/get_invoice_from_client_id').'/'.$client_item['id'];?>>Get invoices</a></li>
+							<li><a href =<?php echo site_url('agent/order/get_client_orders').'/'.$client_item['id'];?>>Get orders</a></li>
 						</ul>
 						</div>
 					</td>

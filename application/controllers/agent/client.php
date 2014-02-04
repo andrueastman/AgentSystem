@@ -10,6 +10,64 @@ class Client extends Agent_Controller{
 		
 		$this->render_page('view_table', $this->data);
 	}
+	
+	public function find_client(){
+		$this->load->helper('form');
+		$this->load->model('client_model');
+		
+		$this->load->library('form_validation');
+		$rules= array(
+				array(
+					'field'=>'first_name',
+					'label'=>'first_name',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'last_name',
+					'label'=>'last_name',
+					'rules'=>'required'
+				)
+		);
+
+		$this->form_validation->set_rules($rules);
+		
+		if($this->form_validation->run() == FALSE){
+			$data['title']="FIND CLIENT";
+			$data['widget_title'] ="FIND CLIENT";
+			$this->render_page('find_client', $data);		
+		}else{
+			$data['title']="FIND CLIENT";
+			$data['widget_title'] ="FIND CLIENT";
+		
+			$data['data'] = $this->client_model->search_clients();
+			$data['links'] = '';
+			$this->render_page('view_clients', $data);
+		}
+	
+	}
+	public function get_order_list($client_id){
+		$this->load->model('');
+	}
+	
+	public function get_client_receipts($client_id){
+		$this->load->model('receipt_model');
+		$results = $this->receipt_model->get_client_receipts($client_id);
+		echo print_r($results);
+	}
+	public function view_client_details($client_id){
+		$this->load->model('receipt_model');
+		
+		
+		$this->receipt_model->get_client_receipts($client_id);
+	
+	}
+	
+	public function view_client_order_details($order_id){
+	
+	}
+	
+	public function view_receipts(){
+	}
 	public function view_clients($search=0, $page=0){
 		$this->load->model('client_model');
 		
