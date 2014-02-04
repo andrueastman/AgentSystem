@@ -35,25 +35,24 @@ $(document).ready(function(){
 			
 			<table>
 				<thead>
-					<th>id</th>
-					<th>first name</th>
-					<th>last name</th>
+					<th>order_id</th>
 					<th>total</th>
-					<th>phone no</th>
-					<th>email</th>
+					<th>date_created</th>
+					<th>invoice_id</th>
+					
 				</thead>
 				<?php foreach($data as $invoice_item):?>
 				<tr>
-					<td><?php echo $invoice_item['id']?></td>
-					<td><?php echo $invoice_item['first_name']?></td>
-					<td><?php echo $invoice_item['last_name']?></td>
+					<td><?php echo $invoice_item['order_id']?></td>
 					<td><?php echo $invoice_item['total']?></td>
-					<td><?php echo $invoice_item['phone_no']?></td>
-					<td><?php echo $invoice_item['email']?></td>
+					<td><?php echo $invoice_item['date_created']?></td>
+					<td><?php echo $invoice_item['id']?></td>
+				
 					<td id="options" class="button">Options
 						<div id="options_menu">
 						<ul>
-							<li><a href =<?php echo site_url('agent/invoice/view_invoice').'/'.$invoice_item['id'];?>>View</a></li>
+							<li><a href =<?php echo site_url('agent/invoice/view_invoice').'/'.$invoice_item['id'];?>>View and Print</a></li>
+							<li><a href =<?php echo site_url('agent/receipt/get_receipt_from_invoice').'/'.$invoice_item['id'];?>>Get Receipts</a></li>
 						</ul>
 						</div>
 					</td>

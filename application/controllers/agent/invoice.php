@@ -27,10 +27,38 @@ class Invoice extends Agent_Controller{
 			$data['widget_title'] ="FIND INVOICE";
 			$this->render_page('find_invoice', $data);		
 		}else{
-			$clients = $this->client_model->search_clients();
-			$this->render_page('view_clients');
+			$data['title']="FIND INVOICE";
+			$data['widget_title'] ="FIND INVOICE";
+		
+			$data['data'] = $this->client_model->search_clients();
+			$data['links'] = '';
+			$this->render_page('view_clients', $data);
 		}
 	
+	}
+	
+	public function get_invoice_from_client_id($client_id){
+		$this->load->model('invoice_model');
+
+			$data['title']="FIND INVOICE";
+			$data['widget_title'] ="FIND INVOICE";
+		
+		$data['data'] = $this->invoice_model->find_client_invoices($client_id);
+		$data['links'] = '';
+		
+		$this->render_page('view_invoice',$data);
+	}
+	public function view_invoice_as_table($invoice_id){
+		$this->load->model('invoice_model');
+			$data['title']="FIND INVOICE";
+			$data['widget_title'] ="FIND INVOICE";
+		
+		$condition = array('id'=>$invoice_id);
+		$data['data'] = $this->invoice_model->get_invoice($condition);
+		$data['links'] = '';
+		
+		$this->render_page('view_invoice',$data);
+		
 	}
 
 	public function test_reporting($invoice_id){

@@ -26,19 +26,24 @@ $(document).ready(function(){
 			
 			<table>
 				<thead>
-					<?php foreach($tableheaders as $thead):?>
-						<th><?php echo $thead;?></th>
-					<?php endforeach;?>
+					<th>id</th>
+					<th>amount</th>
+					<th>type</th>
+					<th>refNo</th>
+					<th>Confirmed</th>										
 				</thead>
-				<?php foreach($products as $product_item):?>
+				<?php foreach($data as $receipt):?>
 				<tr>
-					<?php foreach($tableheaders as $thead):?>
-					<td><?php echo $product_item[$thead];	?></td>
-					<?php endforeach;?>
+					<td><?php echo $receipt['id'];	?></td>
+					<td><?php echo $receipt['amount'];	?></td>
+					<td><?php echo $receipt['type'];	?></td>
+					<td><?php echo $receipt['ref_no'];	?></td>
+					<td><?php echo $receipt['confirmed'];	?></td>
+					<td><?php echo $receipt['id'];	?></td>
 					<td id="options" class="button">Options
 						<div id="options_menu">
 						<ul>
-							<li><a href =<?php echo site_url('agent/receipt/view_receipt').'/'.$product_item['id'];?>>>View</a></li>
+							<li><a href =<?php echo site_url('agent/receipt/view_receipt').'/'.$receipt['id'];?>>>View</a></li>
 						</ul>
 						</div>
 					</td>

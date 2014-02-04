@@ -27,25 +27,19 @@
 		'class'=>'form-horizontal',
 		'role' => 'form'
 	);
-	echo form_open('agent/receipt/find_receipt', $data);?>
+	echo form_open('agent/invoice/find_invoice', $data);?>
 
 	
 	<div class="form-group">
 		<label for ="invoice_id" class="col-sm-2 control-label">FirstName</label>
 		<div class="col-sm-6">
-			<input type="number" class="form-control" name ="invoice_id"/>
+			<input type="text" class="form-control" name ="first_name"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for ="invoice_id" class="col-sm-2 control-label">LastName</label>
 		<div class="col-sm-6">
-			<input type="number" class="form-control" name ="invoice_id"/>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for ="invoice_id" class="col-sm-2 control-label">PhoneNo</label>
-		<div class="col-sm-6">
-			<input type="number" class="form-control" name ="invoice_id"/>
+			<input type="text" class="form-control" name ="last_name"/>
 		</div>
 	</div>
 

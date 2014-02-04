@@ -34,6 +34,11 @@ class Receipt_Model extends CI_Model{
 	public function get_payment_options(){
 		return $this->db->get('payment_options')->result_array();
 	}
+	
+	public function get_receipts($condition = array()){
+		$this->db->select('*')->from('receipts')->where($condition);
+		return $this->db->get()->result_array();
+	}
 	//
 	
 	

@@ -3,6 +3,16 @@
 class Receipt extends Agent_Controller{
 
 
+	public function get_receipt_from_invoice($invoice_id){
+		$this->load->model('receipt_model');
+		
+		$condition = array('invoice_id' =>$invoice_id);
+		$data['title']="FIND RECEIPT";
+		$data['widget_title'] ="FIND RECEIPT";
+
+		$data['data'] = $this->receipt_model->get_receipts($condition);
+		$this->render_page('view_receipt', $data);
+	}
 	public function find_receipt(){
 		$this->load->helper('form');
 		$data['title']="FIND RECEIPT";
