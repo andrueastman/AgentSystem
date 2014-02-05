@@ -40,7 +40,7 @@ $(document).ready(function(){
 					</div>
 				</div><!-- /.row -->
 				
-			<table class="table table-bordered table-hover table-striped tablesorter">
+			<table class="table table-bordered table-hover table-striped">
 				<thead>
 					<th>id <i class="fa fa-sort"></i></th>
 					<th>Name <i class="fa fa-sort"></i></th>

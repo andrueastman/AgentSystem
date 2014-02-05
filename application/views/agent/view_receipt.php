@@ -1,4 +1,4 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -24,7 +24,7 @@ $(document).ready(function(){
 		<div id="box" class ="box">
 			<h3><?php echo $widget_title;?></h3>
 			
-			<table>
+			<table class="table table-bordered table-hover table-striped">
 				<thead>
 					<th>id</th>
 					<th>amount</th>
@@ -39,7 +39,6 @@ $(document).ready(function(){
 					<td><?php echo $receipt['type'];	?></td>
 					<td><?php echo $receipt['ref_no'];	?></td>
 					<td><?php echo $receipt['confirmed'];	?></td>
-					<td><?php echo $receipt['id'];	?></td>
 					<td id="options" class="button">Options
 						<div id="options_menu">
 						<ul>

@@ -1,4 +1,4 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -25,11 +25,13 @@ $(document).ready(function(){
 	
 	<?php $this->load->view('alerts');?>
 		<div id="box" class ="box">
-		<h3>
-			<span><?php echo $widget_title;?></span>
-		</h3>
+		<div class="row">
+				  <div class="col-lg-8">
+					<h1>View Clients</h1>
+				  </div>
+				</div><!-- /.row -->
 			
-			<table>
+			<table class="table table-bordered table-hover table-striped">
 				<thead>
 					<th>id</th>
 					<th>first name</th>

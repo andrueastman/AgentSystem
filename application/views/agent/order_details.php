@@ -1,37 +1,55 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 
 </script>
 
 	<div id="content">
 		<div id="box" class ="box">
 			<h3><?php echo $widget_title;?></h3>
-			
-						
-			
-		
-				<h1>Order Details</h1>
-				<p><?php echo $order['id'];?></p>';
-				<p><?php echo $order['order_date'];?></p>
-				<h1>CLIENT DETAILS</h1>'
-				<p><?php echo $client['Firstname']." ".$client['Lastname'];?></p>
-				<p><?php echo $client['Phone'];?></p>
-				<p><?php echo $client['Email'];?></p>
-				<p><?php echo $client['Location'];?></p>
+					<table class="table table-bordered table-hover table-striped">
+						<thead>
+								<th>Order ID</th>
+								<th>Client Name</th>
+								<th>Order Date</th>
+								<th>Phone</th>
+								<th>Email</th>
+								<th>Location</th>
+						</thead>
+						<tr>
+							<td><?php echo $order['id'];?></td>
+							<td><?php echo $client['Firstname']." ".$client['Lastname'];?></td>
+							<td><?php echo $order['order_date'];?></td>
+							<td><?php echo $client['Phone'];?></td>
+							<td><?php echo $client['Email'];?></td>
+							<td><?php echo $client['Location'];?></td>
+						</tr>
+					</table>
 				
-				<h1>INVOICE DETAILS</h1>
-				<?php if(!empty($invoice)):?>
-				<p><?php echo $invoice['id'];?></p>
-				<p><?php echo $invoice['total'];?></p>
-				<p><?php echo $invoice['date_created'];?></p>
-				<?php else:?>
-				<p>This order has not yet been accepted</p>
-				<?php endif;?>
+				
+				<h4>INVOICE DETAILS</h4>
+					<table class="table table-bordered table-hover table-striped">
+						<thead>
+								<th>Invoice ID</th>
+								<th>Total</th>
+								<th>Invoice Date</th>
+						</thead>
+						<?php if(!empty($invoice)):?>
+						<tr>
+							<td><?php echo $invoice['id'];?></td>
+							<td><?php echo $invoice['total'];?></td>
+							<td><?php echo $invoice['date_created'];?></td>
+							<?php else:?>
+							<td>This order has not yet been accepted</td>
+							<?php endif;?>
+						</tr>
+					</table>
+
+				
 			 
-			<h1>PRODUCTS</h1>
-			<table>
+			<h4>PRODUCTS</h4>
+			<table class="table table-bordered table-hover table-striped">
 				<thead>
-					<th>id</th>
-					<th>name</th>
+					<th>Product id</th>
+					<th>Name</th>
 					<th>price</th>
 					<th>quantity</th>
 				</thead>
@@ -46,8 +64,8 @@
 			
 			<?php endforeach;?>
 
-			<h1>RECEIPTS</h1>
-			<table>
+			<h4>RECEIPTS</h4>
+			<table class="table table-bordered table-hover table-striped">
 				<thead>
 					<th>id</th>
 					<th>amount</th>

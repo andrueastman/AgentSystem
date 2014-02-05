@@ -1,4 +1,4 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -25,15 +25,23 @@ $(document).ready(function(){
 	
 	<?php $this->load->view('alerts');?>
 		<div id="box" class ="box">
-		<h3>
-			<span><?php echo $widget_title;?></span>
-			<span class="extras">
-				<input type="text" value="searchword" id="search_word"/>
-				<input type="button" id="search" value="search"/>
-			<span>
-		</h3>
+		<div class="row">
+				  <div class="col-lg-8">
+					<h1>View Invoices</h1>
+				  </div>
+				  <div class="col-lg-4">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" value="searchword" id="search_word">
+						<span class="input-group-btn">
+						  <button class="btn btn-default" type="button" id="search" value="search"><i class="fa fa-search"></i></button>
+						</span>
+					  </div>
+					
+					
+					</div>
+				</div><!-- /.row -->
 			
-			<table>
+			<table class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
 					<th>order_id</th>
 					<th>total</th>

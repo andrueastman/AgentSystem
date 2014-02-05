@@ -1,21 +1,32 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 
 
 	<div id="content">
 		<div id="box" class ="box">
 			<h3><?php echo $widget_title;?></h3>
 			
-			
-			<?php foreach ($orders as $order):?>
-				<h1>This shold be in a table</h1>
-				<p><?php echo $order['id'];?></p>
-				<p><?php echo $order['order_date'];?></p>
-				<p><?php echo $order['products'];?></p>
-				<p><a href = <?php echo site_url('agent/order/get_order_details')."/".$order['id'];?>>View order details</a></p>
-			<?php endforeach;?>
-			
-			
+			<table class="table table-bordered table-hover table-striped">
+				<thead>
+					<th>Order Id</th>
+					<th>Order Date</th>
+					<th>Products</th>										
+				</thead>
+				<?php foreach ($orders as $order):?>
+				<tr>
+					<td><?php echo $order['id'];?></td>
+					<td><?php echo $order['order_date'];?></td>
+					<td><?php echo $order['products'];?></td>
+					<td id="options" class="button">Options
+						<div id="options_menu">
+						<ul>
+							<li><a href = <?php echo site_url('agent/order/get_order_details')."/".$order['id'];?>>View order details</a></li>
+						</ul>
+						</div>
+					</td>
 
+				</tr>
+				<?php endforeach; ?>
+			</table>
 		</div>
 	</div>
 </div>

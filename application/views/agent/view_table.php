@@ -1,4 +1,4 @@
-<div id ="wrapper">
+<div id ="page-wrapper">
 	<div id="content">
 		<div id="box" class ="box">
 			<h3><?php echo $widget_title;?></h3>
