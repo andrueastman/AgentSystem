@@ -52,16 +52,16 @@
 									<i class="fa fa-check fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">12</p>
-									<p class="announcement-text">Pending Orders</p>
+									<p class="announcement-heading"><?php echo $new_orders;?></p>
+									<p class="announcement-text">Pending your Acceptance Orders</p>
 								  </div>
 								</div>
 							  </div>
-							  <a href="#">
+							  <a href="<?php echo site_url('marketer/order/view_unhandled');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">
-									  Complete Orders
+									  Accept Orders
 									</div>
 									<div class="col-xs-6 text-right">
 									  <i class="fa fa-arrow-circle-right"></i>
@@ -145,7 +145,7 @@
 										<i class="fa fa-check fa-5x"></i>
 									  </div>
 									  <div class="col-xs-6 text-right">
-										<p class="announcement-heading">56</p>
+										<p class="announcement-heading"><?php echo $receipts;?></p>
 										<p class="announcement-text">Payments</p>
 									  </div>
 									</div>

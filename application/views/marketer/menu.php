@@ -17,13 +17,6 @@
 								<li><a href="<?php echo site_url('marketer/agent/create_agent');?>">Add user</a></li>
 							</ul>
 						</li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Others</a>
-							<ul class="dropdown-menu">
-								<li><a href="<?php echo site_url('agent/home');?>">Agent Duties</a></li>
-								<li><a href="><?php echo site_url('admin/records');?>">View data</a></li>
-								<li><a href="<?php echo site_url('admin/memo/create_memo');?>">Make Memo</a></li>
-							</ul
-						</li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Duties</a>
 							<ul class="dropdown-menu">
 								<?php foreach ($jobs as $job):?>

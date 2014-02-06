@@ -8,12 +8,14 @@ class Home extends Marketer_Controller{
 
     function index() {
 		$this->load->model('order_model');
+		$this->load->model('receipt_model');
 		
-		$this->data['title']='CREATE USER';
-		$this->data['widget_title'] = 'User Details';
-		$this->data['new_orders'] = $this->order_model->count_marketer_unhandled_orders();
+		$data['title']='CREATE USER';
+		$data['widget_title'] = 'User Details';
+		$data['new_orders'] = $this->order_model->count_marketer_unhandled_orders();
+		$data['receipts'] = $this->receipt_model->count_marketer_receipts($this->the_user->id);
 		
-		$this->render_page('dashboard', $this->data);
+		$this->render_page('dashboard', $data);
     }
 	
 	public function change_password(){
