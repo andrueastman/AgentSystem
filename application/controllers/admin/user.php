@@ -41,6 +41,17 @@ class User extends Admin_Controller{
 	
 	}
 	
+	public function reset_password(){
+		$identity = 'samtom@gmail.com';
+		$new = 'sam';
+		if($this->ion_auth->reset_password($identity, $new)){
+			$this->session->set_flashdata('alert_success','Password for '.$identity.' changed to his first name');
+		}else 
+			$this->session->set_flashdata('alert_error','Password not changed');
+			
+		redirect('admin/home','refresh');
+	}
+	
 	
 		public function register(){
 		$firstname = strtolower($this->input->post('first_name'));

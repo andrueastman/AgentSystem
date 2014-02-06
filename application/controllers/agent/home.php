@@ -12,6 +12,7 @@ class Home extends Agent_Controller{
 		$this->loadDashboard();
 	}
 	public function change_password(){
+		$this->load->library('form_validation');
 		parent::change_password('agent/home/change_password', $this->the_user->email);
 	}	
 	public function loadDashboard(){

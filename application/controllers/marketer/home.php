@@ -17,6 +17,7 @@ class Home extends Marketer_Controller{
     }
 	
 	public function change_password(){
+		$this->load->library('form_validation');
 		parent::change_password('marketer/home/change_password', $this->the_user->email);
 	}
 	

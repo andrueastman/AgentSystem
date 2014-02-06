@@ -32,7 +32,7 @@
 							</ul>
 						</li>
 
-			
+						<li><a href="<?php echo base_url()?>index.php/agent/home/change_password">Change password</a>
 			<li><a href="<?php echo base_url()?>index.php/auth/logout">Logout</a>
 			</li>
 		</ul>
