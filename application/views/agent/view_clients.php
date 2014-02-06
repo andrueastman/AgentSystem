@@ -28,6 +28,7 @@ $(document).ready(function(){
 		<div class="row">
 				  <div class="col-lg-8">
 					<h1>View Clients</h1>
+					<a href="<?php echo site_url('agent/client/notify_client/TRUE');?>">Notify My Clients</h1>
 				  </div>
 				</div><!-- /.row -->
 			
@@ -53,6 +54,7 @@ $(document).ready(function(){
 							<li><a href =<?php echo site_url('agent/order/render_order_page').'/'.$client_item['id'];?>>Make order</a></li>
 							<li><a href =<?php echo site_url('agent/invoice/get_invoice_from_client_id').'/'.$client_item['id'];?>>Get invoices</a></li>
 							<li><a href =<?php echo site_url('agent/order/get_client_orders').'/'.$client_item['id'];?>>Get orders</a></li>
+							<li><a href =<?php echo site_url('agent/client/client_notified').'/'.$client_item['id'];?>>Notify client</a></li>
 						</ul>
 						</div>
 					</td>

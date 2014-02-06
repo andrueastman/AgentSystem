@@ -21,6 +21,24 @@ class Order_Model extends CI_Model{
 				->where($condition);
 		return $this->db->get()->result_array();
 	}
+	
+	public function count_agent_cancelled_orders($id){
+		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
+				->join('clients','clients.id = orders.client_id')->where('orders.cancelled',1)
+				->where('clients.CurrentAgent', $id);
+		return $this->db->count_all_results();
+	
+	}
+	
+	public function get_basic_agent_cancelled_orders($id){
+		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
+				->join('clients','clients.id = orders.client_id')->where('orders.cancelled',1)
+				->where('clients.CurrentAgent', $id);
+		return $this->db->get()->result_array();
+	}
+	
 	public function get_order_details($order_id){
 		$this->db->select('*')->from('orders')
 				->where('orders.id',$order_id);

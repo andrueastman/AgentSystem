@@ -16,6 +16,16 @@ class Order extends Agent_Controller{
 		$this->render_page('order_list', $data);
 	
 	}
+	
+	public function get_cancelled_orders(){
+		$this->load->model('order_model');
+		$data['orders'] = $this->order_model->get_basic_agent_cancelled_orders($this->the_user->id);
+		$data['title']='CLIENT ORDERS';
+		$data['widget_title'] = 'CLIENT ORDERS';
+		
+		$this->render_page('order_list', $data);
+		
+	}
 	public function get_order_details($order_id){
 		$this->load->model('order_model');
 		

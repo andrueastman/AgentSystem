@@ -4,6 +4,11 @@ class Receipt_Model extends CI_Model{
 		$this->load->database();
 	}
 //after orders added	
+
+	public function count_agent_receipts($id){
+		$this->db->select('*')->from('receipts')->where('receipient_id', $id);
+		return $this->db->count_all_results();
+	}
 	public function add_receipt(){
 		$invoice_id = $this->input->post('invoice_id');
 		if($this->check_invoice_available($invoice_id)){

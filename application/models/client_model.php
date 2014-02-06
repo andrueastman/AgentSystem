@@ -21,9 +21,32 @@ class Client_Model extends CI_Model{
 		return $result->result_array();
 	}
 		
+	public function client_notified($client_id){
+		$data = array('client_informed'=>1);
+		$this->db->select('orders.id')->from('invoices')
+				->join('orders','orders.id = invoices.order_id')
+				->where('orders.client_id', $client_id);
+		$result = $this->db->get()->result_array();
+		
+		foreach($result as $id){
+			if(!$this->db->update('invoices',$data, array('order_id'=>$id['id'])))
+				return FALSE;
+		}
+		return TRUE;
+	}
+
+	public function get_clients_unnotified($condition = array()){
+		$this->db->select('clients.id,clients.Firstname, clients.Lastname, clients.Phone,clients.Location,clients.Email')->from('clients')->join('orders','orders.client_id = clients.id')
+				->join('invoices','invoices.order_id=orders.id')->where('invoices.client_informed',0)->where($condition);
+		return $this->db->get()->result_array();
+	}
+	public function count_agent_clients($id){
+		$this->db->select('id')->from('clients')->where('CurrentAgent', $id);
+		return $this->db->count_all_results();
+	}
 	public function clients_count($search =FALSE, $agent_id = FALSE){
 			$this->db->select('id');
-			$this->db->from('agentclient');
+			$this->db->from('clients');
 			if($search != FALSE){
 				$this->db->like('first_name', $search)->or_like('last_name', $search)->or_like('phone_no', $search)
 				->or_like('email', $search)->or_like('postal', $search)->or_like('company', $search);

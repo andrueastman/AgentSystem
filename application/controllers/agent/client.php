@@ -11,6 +11,30 @@ class Client extends Agent_Controller{
 		$this->render_page('view_table', $this->data);
 	}
 	
+	public function notify_client($agent_id = FALSE){
+		$this->load->model('client_model');
+		
+		$data['links'] = '';
+		if($agent_id){
+			$condition = array('clients.CurrentAgent'=>$this->the_user->id);
+			$data['data']=$this->client_model->get_clients_unnotified($condition);		
+		}else{
+			$data['data']=$this->client_model->get_clients_unnotified();
+		}
+		$this->render_page('view_clients', $data);
+	}
+	
+	public function client_notified($client_id){
+		$this->load->model('client_model');
+		if($this->client_model->client_notified($client_id)){
+			$this->session->set_flashdata('alert_success','Client notification by you has been updated in the database');
+		}else{
+			$this->session->set_flashdata('alert_error','Client has not been notified, Please try again');
+		}
+		redirect('agent/client/notify_client','refresh');
+	}
+
+	
 	public function find_client(){
 		$this->load->helper('form');
 		$this->load->model('client_model');

@@ -16,13 +16,20 @@ class Home extends Agent_Controller{
 		parent::change_password('agent/home/change_password', $this->the_user->email);
 	}	
 	public function loadDashboard(){
-		$this->load->model('memo_model');
+		$this->load->model('invoice_model');
+		$this->load->model('order_model');
+		$this->load->model('client_model');
+		$this->load->model('receipt_model');
 		$data['title'] = "Dashboard";
 		$user = $this->ion_auth->user()->row_array();
-		$data['unread_memos'] = 10;// $this->memo_model->get_count_unread($user['id']);
-		
+		$data['unhandled_invoices'] = $this->invoice_model->count_invoice_unhandled(); 
+		$data['cancelled_orders'] = $this->order_model->count_agent_cancelled_orders($this->the_user->id);
+		$data['clients'] = $this->client_model->count_agent_clients($this->the_user->id);
+		$data['receipts'] = $this->receipt_model->count_agent_receipts($this->the_user->id);
+		$data['unread_memos'] = 10;// $this->memo_model->get_count_unread($user['id']);	
 		$this->render_page('dashboard',$data);
 	}
+	
 	
 	public function testing_pdf($invoice_id){
 		$this->load->helper('pdf');

@@ -50,16 +50,16 @@
 									<i class="fa fa-check fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">12</p>
-									<p class="announcement-text">Pending Orders</p>
+									<p class="announcement-heading"><?php echo $unhandled_invoices;?></p>
+									<p class="announcement-text">Invoices yet to be notified</p>
 								  </div>
 								</div>
 							  </div>
-							  <a href="#">
+							  <a href="<?php echo site_url('agent/client/notify_client');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">
-									  Complete Orders
+									  Notify Clients
 									</div>
 									<div class="col-xs-6 text-right">
 									  <i class="fa fa-arrow-circle-right"></i>
@@ -77,18 +77,18 @@
 									<i class="fa fa-tasks fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">18</p>
-									<p class="announcement-text">Overdue Orders</p>
+									<p class="announcement-heading"><?php echo $cancelled_orders;?></p>
+									<p class="announcement-text">Cancelled Orders</p>
 								  </div>
 								</div>
 							  </div>
 							  
 							  
-							  <a href="#">
+							  <a href="<?php echo site_url('agent/order/get_cancelled_orders');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">
-									  View Orders
+									  View Cancelled Orders
 									</div>
 									<div class="col-xs-6 text-right">
 									  <i class="fa fa-arrow-circle-right"></i>
@@ -112,14 +112,14 @@
 									<i class="fa fa-check fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">56</p>
-									<p class="announcement-text">Clients</p>
+									<p class="announcement-heading"><?php echo $clients;?></p>
+									<p class="announcement-text">Get Clients</p>
 								  </div>
 								</div>
 							  </div>
 							  
 							  
-							  <a href="#">
+							  <a href="<?php echo site_url('agent/client/find_client');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">
@@ -143,18 +143,18 @@
 										<i class="fa fa-check fa-5x"></i>
 									  </div>
 									  <div class="col-xs-6 text-right">
-										<p class="announcement-heading">56</p>
+										<p class="announcement-heading"><?php echo $receipts;?></p>
 										<p class="announcement-text">Payments</p>
 									  </div>
 									</div>
 								  </div>
 								  
 								  
-								  <a href="#">
+								  <a href="<?php echo site_url('agent/receipt/find_receipt');?>">
 									<div class="panel-footer announcement-bottom">
 									  <div class="row">
 										<div class="col-xs-6">
-										  View Receipts
+										  Get Receipts
 										</div>
 										<div class="col-xs-6 text-right">
 										  <i class="fa fa-arrow-circle-right"></i>

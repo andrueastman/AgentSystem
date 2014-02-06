@@ -36,6 +36,15 @@ class Invoice_Model extends CI_Model{
 		$this->db->select('*')->from('invoices')->where($conditions);
 		return $this->db->get()->result_array();
 	}
+	public function count_invoice_unhandled(){
+		$this->db->select('*')->from('invoices')->where('client_informed',0);
+		return $this->db->count_all_results();
+	}
+	public function get_invoice_agent_unhandled(){
+		$this->db->select('*')->from('invoices')->where('client_informed',0);
+		return $this->db->get()->result_array();
+	}
+	
 	
 	///made with orders in mind
 	public function add_invoice_products(){
