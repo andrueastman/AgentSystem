@@ -8,7 +8,7 @@ class Comment_Model extends CI_Model{
 
 	public function get_post($id){
 		$this->db->select('*')->from('coments')->where('id', $id);
-		return $this->db->get()->result_array();
+		return $this->db->get()->row_array();
 	}
 
 
