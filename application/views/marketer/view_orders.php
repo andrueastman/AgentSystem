@@ -23,6 +23,8 @@ $(document).ready(function(){
 	<div >
 	
 		<?php $this->load->view('alerts');?>
+		
+		<?php echo print_r($data);?>
 		<div>
 				<div class="row">
 				  <div class="col-lg-8">

@@ -65,7 +65,10 @@ class Order_Model extends CI_Model{
 	}
 		
 	public function get_orders($conditions= array()){	
-		$this->db->select('orders.id as id, orders.cancelled as cancelled')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')->where($conditions);
+		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
+				->join('agentlinks','agentlinks.agent = orders.agent')->where($conditions);
+		//$this->db->select('orders.id as id, orders.cancelled as cancelled')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')->where($conditions);
 		return $this->db->get()->result_array();
 	}
 	

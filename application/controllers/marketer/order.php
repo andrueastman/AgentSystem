@@ -19,8 +19,11 @@ class Order extends Marketer_Controller{
 	public function view_unhandled(){
 		$this->load->model('order_model');
 		
+		$data['title']='ORDER';
+		$data['widget_title'] = 'Orders';
+		
 		$condition = array(
-			'marketer_id' => NULL,
+			'orders.marketer_id' => NULL,
 			'agentlinks.marketer' =>$this->the_user->id
 			);
 		$data['data'] = $this->order_model->get_orders($condition);

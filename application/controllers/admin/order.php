@@ -22,6 +22,8 @@ class Order extends Admin_Controller{
 	public function view_unhandled(){
 		$this->load->model('order_model');
 		
+		$data['title']='ORDER';
+		$data['widget_title'] = 'Orders';
 		$condition = array(
 			'admin_id' => NULL
 			);

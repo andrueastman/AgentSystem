@@ -91,9 +91,10 @@
 					</td>
 
 				</tr>
+				<?php endforeach;?>
 			</table>
 			
-			<?php endforeach;?>
+			
 			
 			
 
