@@ -19,13 +19,24 @@ class Order extends Admin_Controller{
 		redirect('admin/order/view_unhandled', 'refresh');
 	}
 	
+	public function cancel($order_id){
+		$this->load->model('order_model');
+		if($this->order_model->cancel_order($order_id)){
+			$this->session->set_flashdata('alert_error','The order '.$order_id.' has been cancelled');
+		}else $this->session->set_flashdata('alert_error','The order '.$order_id.' failed to cancel. Please try again');
+		redirect('admin/order/view_unhandled','refresh');
+	
+	}
+
+	
 	public function view_unhandled(){
 		$this->load->model('order_model');
 		
 		$data['title']='ORDER';
 		$data['widget_title'] = 'Orders';
 		$condition = array(
-			'orders.admin_id' => NULL
+			'orders.admin_id' => NULL,
+			'orders.cancelled' =>0
 			);
 		$data['data'] = $this->order_model->get_orders($condition);
 		$this->render_page('view_orders', $data);

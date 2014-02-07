@@ -57,7 +57,7 @@ $(document).ready(function(){
 						<div id="options_menu">
 						<ul>
 							<li><a href =<?php echo site_url('admin/order/approve').'/'.$product_item['id'];?>>Accept order</a></li>
-					
+							<li><a href =<?php echo site_url('admin/order/cancel').'/'.$product_item['id'];?>>Cancel order</a></li>
 						</ul>
 						</div>
 					</td>

@@ -16,14 +16,14 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function get_basic_orders($condition){
-		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+		$this->db->select("orders.id, group_concat(concat_ws('@',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
 				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
 				->where($condition);
 		return $this->db->get()->result_array();
 	}
 	
 	public function count_agent_cancelled_orders($id){
-		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+		$this->db->select("orders.id, group_concat(concat_ws('@',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
 				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
 				->join('clients','clients.id = orders.client_id')->where('orders.cancelled',1)
 				->where('clients.CurrentAgent', $id);
@@ -32,7 +32,7 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function get_basic_agent_cancelled_orders($id){
-		$this->db->select("orders.id, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+		$this->db->select("orders.id, group_concat(concat_ws('@',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
 				->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id')
 				->join('clients','clients.id = orders.client_id')->where('orders.cancelled',1)
 				->where('clients.CurrentAgent', $id);
@@ -65,7 +65,7 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function get_orders($conditions= array()){	
-		$this->db->select("orders.id,orders.cancelled, group_concat(concat_ws('=',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
+		$this->db->select("orders.id,orders.cancelled, group_concat(concat_ws('@',products.Name,price) separator ',') as products, orders.order_date ", FALSE)->from('orders')
 				->where($conditions)->join('order_particulars','orders.id= order_particulars.order_id')->join('products','products.id = order_particulars.product_id','left')
 				->join('agentlinks','agentlinks.agent = orders.agent','left')->group_by('orders.id');
 		//$this->db->select('orders.id as id, orders.cancelled as cancelled')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')->where($conditions);
@@ -169,7 +169,7 @@ class Order_Model extends CI_Model{
 	}
 	
 	public function count_admin_unhandled_orders(){
-		$this->db->where('admin_id', null);
+		$this->db->where('admin_id', null)->where('cancelled',0);
 		$this->db->from('orders');
 		return $this->db->count_all_results();
 	}
@@ -177,7 +177,7 @@ class Order_Model extends CI_Model{
 	//orders made by agent agents belon to marketers
 		$id = $this->ion_auth->user()->row()->id;
 		$this->db->select('*')->from('orders')->join('agentlinks','agentlinks.agent = orders.agent')
-				->where('agentlinks.marketer',$id)->where('orders.marketer_id', NULL);
+				->where('agentlinks.marketer',$id)->where('orders.marketer_id', NULL)->where('orders.cancelled',0);
 		return $this->db->count_all_results();	
 	}
 	public function get_overdue_handled_orders(){
