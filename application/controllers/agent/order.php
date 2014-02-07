@@ -29,6 +29,9 @@ class Order extends Agent_Controller{
 	public function get_order_details($order_id){
 		$this->load->model('order_model');
 		
+		$this->load->model('comment_model');
+		$data['row'] = $this->comment_model->get_post(1);
+		$data['comments'] = $this->comment_model->retrieve_comments_with_post_id($order_id);
 		$data['order'] = $this->order_model->get_order_details($order_id);
 		$data['invoice'] = $this->order_model->get_order_invoice($order_id);
 		$data['client'] = $this->order_model->get_order_clients($order_id);

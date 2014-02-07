@@ -25,7 +25,7 @@ class Order extends Admin_Controller{
 		$data['title']='ORDER';
 		$data['widget_title'] = 'Orders';
 		$condition = array(
-			'admin_id' => NULL
+			'orders.admin_id' => NULL
 			);
 		$data['data'] = $this->order_model->get_orders($condition);
 		$this->render_page('view_orders', $data);

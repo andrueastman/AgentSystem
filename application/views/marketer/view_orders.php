@@ -23,8 +23,7 @@ $(document).ready(function(){
 	<div >
 	
 		<?php $this->load->view('alerts');?>
-		
-		<?php echo print_r($data);?>
+
 		<div>
 				<div class="row">
 				  <div class="col-lg-8">
@@ -44,12 +43,16 @@ $(document).ready(function(){
 				
 			<table class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
-					<th>id <i class="fa fa-sort"></i></th>
-					<th>Status <i class="fa fa-sort"></i></th>
+					<th>Order ID<i class="fa "></i></th>
+					<th>Order Date<i class="fa "></i></th>
+					<th>Products<i class="fa "></i></th>
+					<th>Status <i class="fa "></i></th>
 				</thead>
 				<?php foreach($data as $product_item):?>
 				<tr>
 					<td><?php echo $product_item['id'];?></td>
+					<td><?php echo $product_item['order_date'];?></td>
+					<td><?php echo $product_item['products'];?></td>
 					<td><?php echo $product_item['cancelled'];?></td>
 					<td id="options" class="button">Options
 						<div id="options_menu">

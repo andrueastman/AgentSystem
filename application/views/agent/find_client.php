@@ -16,13 +16,13 @@
 	<div class="form-group">
 		<label for ="invoice_id" class="col-sm-2 control-label">FirstName</label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" name ="first_name"/>
+			<input type="text" class="form-control" name ="first_name"/ required>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for ="invoice_id" class="col-sm-2 control-label">LastName</label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" name ="last_name"/>
+			<input type="text" class="form-control" name ="last_name"/ required>
 		</div>
 	</div>
 
