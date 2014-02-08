@@ -21,13 +21,13 @@
 									<i class="fa fa-comments fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">456</p>
+									<p class="announcement-heading"><?php echo $comments;?></p>
 									<p class="announcement-text">Messages</p>
 								  </div>
 								</div>
 							  </div>
 							  
-							  <a href="#">
+							  <a href="<?php echo site_url('admin/order/get_orders_with_comments');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">

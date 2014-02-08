@@ -48,10 +48,12 @@ $route['admin/(:any)'] = 'admin/$1';
 $route['admin/home/(:any) '] = 'admin/home/$1';
 $route['admin/products/sview_products/(:any)'] = 'admin/products/sview_products/$1';
 $route['marketer/home'] = 'marketer/home';
+$route['marketer/home/(:any)'] = 'marketer/home/$1';
 $route['marketer/(:any)'] = 'marketer/$1';
 $route['marketer/agent/create_agent'] = 'marketer/agent/create_agent';
 $route['agent/home'] ='agent/home';
 $route['agent/home/(:any)'] = 'agent/home/$1';
+$route['agent/(:any)'] = 'agent/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

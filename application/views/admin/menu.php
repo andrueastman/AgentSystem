@@ -30,7 +30,7 @@
 								<?php endforeach;?>
 							</ul>
 						</li>
-
+						<li><a href="<?php echo base_url()?>index.php/admin/home/change_password">Change password</a>
 						<li><a href="<?php echo site_url('auth/logout');?>">Logout</a></li>
 				</ul>       
  

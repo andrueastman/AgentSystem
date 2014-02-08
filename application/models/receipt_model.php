@@ -63,6 +63,9 @@ class Receipt_Model extends CI_Model{
 				->where('clients.id',$client_id);
 		return $this->db->get()->result_array();
 	}
+	public function confirm_receipt($receipt_id){
+	
+	}
 	//
 	
 	
@@ -113,6 +116,13 @@ class Receipt_Model extends CI_Model{
 		$query = $this->db->list_fields($table);
 		return $query;
 	}
+	
+	public function update_confirmed($order_id){}
+	
+	public function update_receipt($order_id, $data){
+		return $this->db->update('orders',$data, array('id'=>$order_id));
+	}
+
 
 
 }

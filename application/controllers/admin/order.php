@@ -27,6 +27,35 @@ class Order extends Admin_Controller{
 		redirect('admin/order/view_unhandled','refresh');
 	
 	}
+	
+	public function get_order_details($order_id){
+		$this->load->model('order_model');
+		
+		$this->load->model('comment_model');
+		$data['row'] = $this->comment_model->get_post(1);
+		$data['comments'] = $this->comment_model->retrieve_comments_with_post_id($order_id);
+		$data['order'] = $this->order_model->get_order_details($order_id);
+		$data['invoice'] = $this->order_model->get_order_invoice($order_id);
+		$data['client'] = $this->order_model->get_order_clients($order_id);
+		$data['products'] = $this->order_model->get_order_products($order_id);
+		$data['receipts'] = $this->order_model->get_order_receipts($order_id);
+		$data['title']='ORDER DETAILS';
+		$data['widget_title'] = 'ORDER DETAILS';
+
+		$this->render_page('order_details', $data);
+	}
+	public function get_orders_with_comments(){
+		$this->load->model('order_model');
+		
+		$data['orders'] = $this->order_model->get_orders_with_comments();
+		$data['title']='CLIENT ORDERS';
+		$data['widget_title'] = 'CLIENT ORDERS';
+		
+		$this->render_page('order_list', $data);
+	
+	}
+
+
 
 	
 	public function view_unhandled(){

@@ -29,7 +29,8 @@ class Agent extends Marketer_Controller{
 		}
 	}
 	public function view_agents(){
-		$results = $this->ion_auth->users('3')->result_array();
+		$this->load->model('user_model');
+		$results = $this->user_model->get_marketer_agents($this->the_user->id);
 		$this->data['title'] = 'VIEW AGENTS';
 		$this->data['widget_title']='Agents';
 		$this->data['agents'] = $results;

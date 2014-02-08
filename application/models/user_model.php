@@ -42,6 +42,11 @@ class User_Model extends CI_Model{
 		}
 	}
 	
+	public function get_marketer_agents($id){
+		$this->db->select('*, users.id as id')->from('users')->join('agentlinks','agentlinks.agent = users.id')->where('agentlinks.marketer', $id);
+		return $this->db->get()->result_array();
+	}
+	
 	public function get_users($group=0, $search = FALSE, $marketer_id =FALSE){
 		return $this->ion_auth->users();
 	}

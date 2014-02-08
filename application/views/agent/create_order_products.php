@@ -162,8 +162,8 @@
 					dataType: "json",
 					success: function(dat){
 						if(dat.status=='success'){
-							alert('success');
-							//window.location = ("<?php echo site_url('agent/invoice/test_reporting').'/';?>"+dat.invoice_id);
+							//alert('success');
+							window.location = ("<?php echo site_url('agent/order/get_order_details').'/';?>"+dat.order_id);
 						}else{
 							alert('error');
 							$('#alert').html(dat.errors);

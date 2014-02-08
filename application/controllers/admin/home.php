@@ -13,6 +13,7 @@ class Home extends Admin_Controller {
 		$this->data['title']='CREATE USER';
 		$this->data['widget_title'] = 'User Details';
 		$this->data['new_orders'] = $this->order_model->count_admin_unhandled_orders();
+		$this->data['comments'] =$this->order_model->get_orders_with_comments(TRUE);
 		
 		$this->render_page('dashboard', $this->data);
     }
