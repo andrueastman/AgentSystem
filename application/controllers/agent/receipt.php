@@ -100,12 +100,12 @@ class Receipt extends Agent_Controller{
 			$this->render_page('create_receipt', $this->data);
 		}
 		else{
-			if(($receipt_id=$this->receipt_model->add_receipt())){
+			if(($receipt_id=$this->receipt_model->add_receipt($this->the_user->id))){
 				$invoice_id = $this->receipt_model->get_invoice_id($receipt_id);
 				$order_id = $this->invoice_model->get_order_id($invoice_id);
 				
 				if(!$this->order_model->is_active($order_id)){
-					if($this->receipt_model->get_total_payments($invoice_id)/$this->invoice_model->get_total($invoice_id) >0.5){
+					if($this->receipt_model->get_total_payments($invoice_id)/(($this->invoice_model->get_total($invoice_id)==0)?1:$this->invoice_model->get_total($invoice_id)) >0.5){
 						$this->order_model->activate_order($order_id);
 						$this->session->set_flashdata('alert_success','Receipt added.... Order has been activated');
 						redirect('agent/receipt/test_reporting/'.$receipt_id,'refresh');

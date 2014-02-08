@@ -38,7 +38,7 @@
 	<div class ="form-group" id="ref_no">
 		<label for="Ref_no" class="col-sm-2 control-label">Ref No</label>
 		<div class="col-sm-6">
-			<input type="number" class="form-control" name ="amount"/>
+			<input type="number" class="form-control" name ="Ref_no"/>
 		</div>
 	</div>
 

@@ -14,7 +14,7 @@ class Receipt_Model extends CI_Model{
 				->where('agentlinks.marketer',$id);
 		return $this->db->count_all_results();
 	}
-	public function add_receipt(){
+	public function add_receipt($id){
 		$invoice_id = $this->input->post('invoice_id');
 		if($this->check_invoice_available($invoice_id)){
 			$data = array(
@@ -22,7 +22,10 @@ class Receipt_Model extends CI_Model{
 				'amount' => $this->input->post('amount'),
 				'type' =>$this->input->post('type'),
 				'confirmed' => ($this->input->post('type')=='cash'?1:0),
-				'date_paid' =>$this->get_current_date()
+				'date_paid' =>$this->get_current_date(),
+				'ref_no' =>$this->input->post('Ref_no'),
+				'receipient_id'=>$id
+
 			);
 			if($this->db->insert('receipts',$data)){
 				return $this->db->insert_id();
@@ -101,10 +104,11 @@ class Receipt_Model extends CI_Model{
 		return $result['invoice_id'];
 	}
 	
-	public function addReceipt(){
+	public function addReceipt($id){
+		$ref_no = (!empty($this->input->post('Ref_no'))?$this->input->post('Ref_no'):Null);
 		$data = array(
 			'invoice_id' =>$this->input->post('invoice_id'),
-			'amount' => $this->input->post('amount')
+			'amount' => $this->input->post('amount'),
 		);
 		$this->db->insert('receipt',$data);	
 	}
@@ -117,10 +121,23 @@ class Receipt_Model extends CI_Model{
 		return $query;
 	}
 	
-	public function update_confirmed($order_id){}
+	public function get_unconfirmed(){
+		$condition = array('confirmed' =>0);
+		return $this->get_receipts($condition);
+	}
 	
-	public function update_receipt($order_id, $data){
-		return $this->db->update('orders',$data, array('id'=>$order_id));
+	public function count_unconfirmed(){
+		$this->db->select('*')->from('receipts')->where('confirmed',0);
+		return $this->db->count_all_results();
+	}
+	
+	public function update_confirmed($receipt_id){
+		$data =array('confirmed' =>1);
+		$this->db->update_receipt($receipt_id,$data);
+	}
+	
+	public function update_receipt($receipt_id, $data){
+		return $this->db->update('orders',$data, array('id'=>$receipt_id));
 	}
 
 

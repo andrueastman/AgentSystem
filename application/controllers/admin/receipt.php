@@ -1,5 +1,5 @@
 <?php
-class Records extends Admin_Controller{
+class Receipt extends Admin_Controller{
 	public function index(){
 	
 		$this->data['title'] = 'RECORD OPTIONS';
@@ -26,10 +26,15 @@ class Records extends Admin_Controller{
 
 	}
 	
-	public function confirm_payment(){
-	
+	public function confirm_payment($receipt_id){
+		$this->load->model('receipt_model');
+		$this->receipt_model->update_confirmed($receipt_id);
 	}
-	public function get_unconfirmed_receipts(){}
+	public function get_unconfirmed_receipts(){
+		$this->load->model('receipt_model');
+		$data['data']=$this->receipt_model->get_unconfirmed();
+		$this->render_page('view_receipts',$data);
+	}
 
 }
 

@@ -78,18 +78,18 @@
 									<i class="fa fa-tasks fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">18</p>
-									<p class="announcement-text">Overdue Orders</p>
+									<p class="announcement-heading"><?php echo $unconfirmed_receipts;?></p>
+									<p class="announcement-text">Unconfirmed Receipts</p>
 								  </div>
 								</div>
 							  </div>
 							  
 							  
-							  <a href="#">
+							  <a href="<?php echo site_url('admin/receipt/get_unconfirmed_receipts');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">
-									  View Orders
+									  View Unconfirmed Receipts
 									</div>
 									<div class="col-xs-6 text-right">
 									  <i class="fa fa-arrow-circle-right"></i>

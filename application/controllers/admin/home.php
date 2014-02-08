@@ -9,11 +9,13 @@ class Home extends Admin_Controller {
 	
     function index() {
 		$this->load->model('order_model');
+		$this->load->model('receipt_model');
 		
 		$this->data['title']='CREATE USER';
 		$this->data['widget_title'] = 'User Details';
 		$this->data['new_orders'] = $this->order_model->count_admin_unhandled_orders();
 		$this->data['comments'] =$this->order_model->get_orders_with_comments(TRUE);
+		$this->data['unconfirmed_receipts'] = $this->receipt_model->count_unconfirmed(); 
 		
 		$this->render_page('dashboard', $this->data);
     }
