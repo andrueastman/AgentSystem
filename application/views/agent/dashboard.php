@@ -5,10 +5,11 @@
             <h1>Agent Dashboard</h1>
           </div>
         </div><!-- /.row -->
-			<div class="alert alert-info alert-dismissable">
+	<!--		<div class="alert alert-info alert-dismissable">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					You have <a href="<?php echo base_url()?>index.php/agent/memo/view_memo"><?php echo $unread_memos;?> unread memos
+					You have <a href="<?php echo base_url()?>index.php/agent/memo/view_memo"><?php echo $unread_memos;?> unread memos</a>
               </div>
+			  -->
 
 	 
 				<div class="row">
