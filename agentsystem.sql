@@ -29,7 +29,7 @@ CREATE TABLE `agentlinks` (
   `marketer` int(10) unsigned NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `agentlinks` (
 
 LOCK TABLES `agentlinks` WRITE;
 /*!40000 ALTER TABLE `agentlinks` DISABLE KEYS */;
-INSERT INTO `agentlinks` VALUES (2,2,1),(3,3,2),(4,3,3),(5,3,4),(6,3,5),(7,3,6),(1,1,7);
+INSERT INTO `agentlinks` VALUES (1,1,1);
 /*!40000 ALTER TABLE `agentlinks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `clients` (
   KEY `FK_Current_idx` (`CurrentAgent`),
   CONSTRAINT `FK_Creator` FOREIGN KEY (`Creator`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Current` FOREIGN KEY (`CurrentAgent`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `clients` (
 
 LOCK TABLES `clients` WRITE;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,'Andrew','Omondi','725255212','andrueastman@gmail.com','Nairobi',1,1),(2,'Samuel','Sam','0723456789','','',1,1),(3,'Kamau','Makau','0756453434','kams@gmail.com','',4,4),(4,'Chris','Bart','01244','','',4,4);
+INSERT INTO `clients` VALUES ();
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,12 +116,13 @@ CREATE TABLE `commentlist` (
   `UserId` int(10) unsigned NOT NULL,
   `Comment` varchar(300) NOT NULL,
   `Time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `OrderID` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_Order_idx` (`commentid`),
   KEY `FK_User_idx` (`UserId`),
   CONSTRAINT `FK_Comments` FOREIGN KEY (`commentid`) REFERENCES `coments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Username` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +131,7 @@ CREATE TABLE `commentlist` (
 
 LOCK TABLES `commentlist` WRITE;
 /*!40000 ALTER TABLE `commentlist` DISABLE KEYS */;
-INSERT INTO `commentlist` VALUES (1,1,1,'hjgcjhgckjhkh','2014-01-23 09:07:22'),(2,1,1,'xfgnxjjfdjg','2014-01-23 09:07:26'),(3,1,1,'srtsusustu','2014-01-23 09:07:33'),(4,1,1,'sfjdjgfjfdgj','2014-01-23 09:07:48'),(5,1,1,'dfhdfhdfdfh','2014-01-23 09:07:59');
+INSERT INTO `commentlist` VALUES ();
 /*!40000 ALTER TABLE `commentlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +177,7 @@ CREATE TABLE `invoices` (
   PRIMARY KEY (`id`),
   KEY `FK_order_idx` (`order_id`),
   CONSTRAINT `FK_invoice_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +186,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,2,'2014-01-24 15:30:01',400.00,1,NULL),(2,7,'2014-01-25 05:42:30',200.00,1,NULL);
+INSERT INTO `invoices` VALUES ();
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +240,7 @@ CREATE TABLE `order_particulars` (
 
 LOCK TABLES `order_particulars` WRITE;
 /*!40000 ALTER TABLE `order_particulars` DISABLE KEYS */;
-INSERT INTO `order_particulars` VALUES (2,2,200.00,2),(3,2,150.00,1),(4,2,150.00,1),(5,2,150.00,1),(6,2,200.00,1),(7,2,200.00,1),(8,2,200.00,1),(9,2,200.00,1),(10,1,0.00,0),(10,2,200.00,3);
+INSERT INTO `order_particulars` VALUES ();
 /*!40000 ALTER TABLE `order_particulars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +273,7 @@ CREATE TABLE `orders` (
   CONSTRAINT `FK_agent` FOREIGN KEY (`agent`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_client` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_marketer` FOREIGN KEY (`marketer_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +282,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,0,0,1,1,'2014-01-23 08:18:15',1,'2014-01-23 08:18:15','2014-01-23 08:18:15',1,0,0),(2,0,1,2,1,'2014-01-24 15:30:01',1,'2014-01-24 15:18:55','2014-01-24 12:10:34',1,0,0),(3,0,0,2,NULL,NULL,NULL,'2014-01-24 15:03:55','2014-01-24 12:11:23',1,0,0),(4,0,0,2,NULL,NULL,NULL,NULL,'2014-01-24 12:14:29',1,0,0),(5,0,0,2,NULL,NULL,NULL,NULL,'2014-01-24 12:16:40',1,0,0),(6,1,0,2,NULL,NULL,NULL,NULL,'2014-01-24 12:17:02',1,0,0),(7,1,0,3,3,'2014-01-25 05:40:57',1,'2014-01-25 05:42:30','2014-01-25 05:40:36',4,0,0),(8,1,0,4,NULL,NULL,NULL,NULL,'2014-01-25 12:54:41',4,0,0),(9,1,0,4,NULL,NULL,NULL,NULL,'2014-01-25 12:55:05',4,0,0),(10,1,0,1,NULL,NULL,NULL,NULL,'2014-02-04 14:25:57',1,0,0);
+INSERT INTO `orders` VALUES ();
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +324,7 @@ CREATE TABLE `products` (
   `MaxPrice` decimal(10,2) NOT NULL,
   `Active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +333,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'8X15','business best',0.00,0.00,1),(2,'windows','',100.00,200.00,1);
+INSERT INTO `products` VALUES ();
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,7 +360,7 @@ CREATE TABLE `receipts` (
   CONSTRAINT `FK_invoice` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_payment_type` FOREIGN KEY (`type`) REFERENCES `payment_options` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_receipient` FOREIGN KEY (`receipient_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,7 +369,7 @@ CREATE TABLE `receipts` (
 
 LOCK TABLES `receipts` WRITE;
 /*!40000 ALTER TABLE `receipts` DISABLE KEYS */;
-INSERT INTO `receipts` VALUES (15,1,100.00,'cash',NULL,NULL,1,'2014-01-28 13:30:20'),(16,1,100.00,'cash',NULL,NULL,1,'2014-01-28 13:30:34'),(17,1,100.00,'cash',NULL,NULL,1,'2014-01-28 13:30:40');
+INSERT INTO `receipts` VALUES ();
 /*!40000 ALTER TABLE `receipts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -398,7 +399,7 @@ CREATE TABLE `users` (
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,7 +408,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'\0\0','administrator','59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4','9462e8eee0','admin@admin.com','',NULL,NULL,NULL,1268889823,1391765545,1,'Admin','istrator','ADMIN','0'),(2,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','a s','dbd4a6d9fa971758968dcf87d53566097f63b8fe',NULL,'a@a',NULL,NULL,NULL,NULL,1390390527,1390390527,1,'a','s','0','98345'),(3,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','tom sam','9baaf2d18df9dc95ec92f7d6582246148961e45b',NULL,'tomsam@gmail.com',NULL,NULL,NULL,NULL,1390613250,1391482700,1,'tom','sam','0','0712123123'),(4,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','sam tom','9cf3c491207d5d7f0b75e36094058c78a6e03375',NULL,'samtom@gmail.com',NULL,NULL,NULL,NULL,1390614180,1391568766,1,'sam','tom','0','0712343434'),(5,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','dan sam','76ea320859cb42880f849fcde79470fed9fa959a',NULL,'dam@d.com',NULL,NULL,NULL,NULL,1390614326,1390614326,1,'dan','sam','0','12313132'),(6,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','fun kam','9c62f90b36e3f77d50a7ce921fab02df3d0dbe39',NULL,'fun@g.com',NULL,NULL,NULL,NULL,1390614420,1390614420,1,'fun','kam','0','124131'),(7,'\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','dan fun','9a6dba78999f51aea94ce1d2978b0266fcd9bcc0',NULL,'fuds@assd.com',NULL,NULL,NULL,NULL,1390614448,1390614448,1,'dan','fun','0','1231413');
+INSERT INTO `users` VALUES (1,'\0\0','administrator','59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4','9462e8eee0','admin@admin.com','',NULL,NULL,NULL,1268889823,1391936964,1,'Admin','istrator','ADMIN','0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -428,7 +429,7 @@ CREATE TABLE `users_groups` (
   KEY `fk_users_groups_groups1_idx` (`group_id`),
   CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -437,7 +438,7 @@ CREATE TABLE `users_groups` (
 
 LOCK TABLES `users_groups` WRITE;
 /*!40000 ALTER TABLE `users_groups` DISABLE KEYS */;
-INSERT INTO `users_groups` VALUES (1,1,1),(2,1,2),(3,1,3),(4,2,2),(5,2,3),(6,3,2),(7,3,3),(8,4,3),(9,5,3),(10,6,3),(11,7,3);
+INSERT INTO `users_groups` VALUES (1,1,1),(2,1,2),(3,1,3);
 /*!40000 ALTER TABLE `users_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -450,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-07 12:59:58
+-- Dump completed on 2014-02-09 12:16:43
