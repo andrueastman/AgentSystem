@@ -95,7 +95,7 @@ class Invoice extends Agent_Controller{
 		$this->data['date_created'] = date('m-d-y', strtotime($this->invoice_model->get_invoice_date_created($invoice_id)));
 		$this->data['date_due'] = date('m-d-y', strtotime($this->invoice_model->get_invoice_date_due($invoice_id)));
 		$html = $this->load->view("templates/invoice_pdf",$this->data, TRUE);
-		make_invoice_pdf($html,true);
+		make_invoice_pdf($html,true,'INV'.$this->data['invoice_id']);
 	}
 
 	public function view(){

@@ -25,7 +25,7 @@
 	<div class="form-group">
 		<label for ="invoice_id" class="col-sm-2 control-label">ReceiptID</label>
 		<div class="col-sm-6">
-			<input type="number" id="receipt_id" class="form-control" name ="receipt_id"/>
+			<input type="number" id="receipt_id" class="form-control" name ="receipt_id" />
 		</div>
 	</div>
 
@@ -86,7 +86,7 @@
 				$('#form_receipt').show();			
 			});
 			$('#get_receipt').click(function(){
-				window.location = ("<?php echo site_url('agent/receipt/view_receipt').'/';?>"+$('#receipt_id').val());
+				window.location = ("<?php echo site_url('agent/receipt/relink_receipt_from_receipt_id').'/';?>"+$('#receipt_id').val());
 			});
 			$('#get_invoice').click(function(){
 				window.location = ("<?php echo site_url('agent/invoice/view_invoice_as_table').'/';?>"+$('#invoice_id').val());

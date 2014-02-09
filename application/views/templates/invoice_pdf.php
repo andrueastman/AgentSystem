@@ -16,11 +16,9 @@
 				<p><?php echo $company['email'];?></p></div>
 			</div>
 			<div id="client_details">
-				<p><?php echo $client['first_name']." ".$client['last_name'];?></p>
-				<p><?php echo $client['email'];?></p>
-				<p><?php echo $client['phone_no'];?></p>
-				<p><?php echo $client['postal'];?></p>
-				<p><?php echo $client['company'];?></p>
+				<p><strong>Client Name: </strong><?php echo $client['Firstname']." ".$client['Lastname'];?></p>
+				<p><strong>Email: </strong><?php echo $client['Email'];?></p>
+				<p><strong>Phone: </strong><?php echo $client['Phone'];?></p>
 			</div>
 			<div id="invoice_info"> 
 				<h2>Invoice INV<?php echo $invoice_id;?></h2> 
@@ -44,10 +42,10 @@
 						<?php foreach ($products as $product_item):?>
 						<tr>							
 							<td class="leftalign"><?php echo $product_item['product_id'];?></td>
-							<td class="leftalign"><?php echo $product_item['name'];?></td>
+							<td class="leftalign"><?php echo $product_item['Name'];?></td>
 							<td class="rightalign"><?php echo $product_item['quantity'];?></td>
-							<td class="rightalign"><?php echo $product_item['unit_price'];?></td>
-							<td class="rightalign"><?php echo $product_item['quantity']*$product_item['unit_price'];?></td>
+							<td class="rightalign"><?php echo $product_item['price'];?></td>
+							<td class="rightalign"><?php echo $product_item['quantity']*$product_item['price'];?></td>
 						</tr>
 						<?php endforeach;?>
 					</tbody>
@@ -63,8 +61,11 @@
 				</table>
 			</div>
 			<div id="invoice_other">
-				<h2>Other Information</h2>
-				<p>This is other information</p>
+				<h2 id="payment-terms">Payment Terms:</h2> 
+				<p id="payment-due">We shall start working on our order only if at least 50% of total has been paid</p> 
+				<p id="payment-total"><?php echo 'Kshs.' .$total;?></p>
+				<!--<h2>Other Information</h2>
+				<p>This is other information</p>-->
 			</div>
 			<div id="payment_details">
 				<h2>Payment Details</h2>

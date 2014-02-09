@@ -9,10 +9,10 @@ function testing_pdf($html){
 	return pdf_create($html, 'sample', true);
 }
 
-function make_invoice_pdf($html, $stream =TRUE){
+function make_invoice_pdf($html, $stream =TRUE, $name= 'sample'){
 	$CI = & get_instance();
 	$CI->load->helper('mpdf');
-	return pdf_create($html, 'sample', $stream);
+	return pdf_create($html, $name, $stream);
 
 }
 ?>

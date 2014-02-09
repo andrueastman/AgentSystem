@@ -26,7 +26,7 @@ class Home extends Agent_Controller{
 		$data['cancelled_orders'] = $this->order_model->count_agent_cancelled_orders($this->the_user->id);
 		$data['clients'] = $this->client_model->count_agent_clients($this->the_user->id);
 		$data['receipts'] = $this->receipt_model->count_agent_receipts($this->the_user->id);
-		$data['unread_memos'] = 10;// $this->memo_model->get_count_unread($user['id']);	
+		$data['unread_orders'] = $this->order_model->get_agent_orders_with_comments(TRUE);// $this->memo_model->get_count_unread($user['id']);	
 		$this->render_page('dashboard',$data);
 	}
 	

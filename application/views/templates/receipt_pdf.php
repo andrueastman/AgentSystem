@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>INVOICE</title>
-			<link rel="stylesheet" type="text/css" href="http://localhost/AgentSystem/assets/css/invoice_pdf.css" />
+			<link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/invoice_pdf.css';?> " />
 	</head>
 	<body>
 			<div id="invoice">
@@ -16,11 +16,9 @@
 				<p><?php echo $company['email'];?></p></div>
 			</div>
 			<div id="client_details">
-				<p><?php echo $client['first_name']." ".$client['last_name'];?></p>
-				<p><?php echo $client['email'];?></p>
-				<p><?php echo $client['phone_no'];?></p>
-				<p><?php echo $client['postal'];?></p>
-				<p><?php echo $client['company'];?></p>
+				<p><strong>Received from: </strong><?php echo $client['Firstname']." ".$client['Lastname'];?></p>
+				<p><strong>Email: </strong><?php echo $client['Email'];?></p>
+				<p><strong>Phone: </strong><?php echo $client['Phone'];?></p>
 			</div>
 			<div id="invoice_info"> 
 				<h2>RECIEIPT REC<?php echo $receipt_id;?></h2> 
@@ -31,7 +29,7 @@
 					<thead>
 						<tr>
 							<th class="leftalign">Receipt id</th>
-							<th class="rightalign">Amount</th>
+							<th class="rightalign">Invoice id</th>
 							<th class="rightalign">Means</th>
 							<th class="rightalign">Total</th>
 						</tr>

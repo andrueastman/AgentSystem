@@ -6,9 +6,10 @@ class Receipt extends Agent_Controller{
 	public function relink_receipt_from_receipt_id($receipt_id){
 		$this->load->model('receipt_model');
 		if($this->receipt_model->receipt_exists($receipt_id)){
-			redirect();
+			redirect('agent/receipt/view_receipt/'.$receipt_id);
 		}else{
 			$this->session->set_flashdata('alert_error','That receipt id is not in the system');
+			redirect('agent/receipt/find_receipt','refresh');
 		}
 	}
 	public function get_receipt_from_invoice($invoice_id){
@@ -45,13 +46,13 @@ class Receipt extends Agent_Controller{
 		
 		$invoice_id = $this->receipt_model->get_invoice_id($receipt_id);
 		$this->data['receipt_id'] = sprintf('%1$03d',$receipt_id);
-		//$this->data['company'] = $this->invoice_model->get_company_details();
+		
+		$this->data['company'] = $this->invoice_model->get_company_details();
 		$this->data['client'] = $this->invoice_model->get_client_info($invoice_id);
 		$this->data['receipt'] = $this->receipt_model->get_receipt_details($receipt_id);
-			//	$this->data['date_created'] = date('m-d-y', strtotime($this->invoice_model->get_invoice_date_created($invoice_id)));
 		$this->data['date_paid'] = date('m-d-y', strtotime($this->data['receipt']['date_paid']));
 		$html = $this->load->view("templates/receipt_pdf",$this->data, TRUE);
-		make_invoice_pdf($html,true);
+		make_invoice_pdf($html,true,'REC'.$this->data['receipt_id']);
 	}
 	
 	public function view_receipt($receipt_id){

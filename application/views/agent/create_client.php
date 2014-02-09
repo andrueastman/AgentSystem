@@ -20,19 +20,19 @@
 	<div class="form-group">
 		<label for ="first_name" class="col-sm-2 control-label">First Name</label>
 		<div class="col-sm-6">
-			<input type="text" name ="first_name" class="form-control" id="first_name"/>
+			<input type="text" name ="first_name" class="form-control" id="first_name" required/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for ="last_name" class="col-sm-2 control-label">Last Name</label>
 		<div class="col-sm-6">
-			<input type="text" name ="last_name" class="form-control" id="last_name"/>
+			<input type="text" name ="last_name" class="form-control" id="last_name" required/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for ="phone_no" class="col-sm-2 control-label">Phone no</label>
 		<div class="col-sm-6">	
-			<input type="text" name ="phone_no" class="form-control" id="phone_no"/>
+			<input type="text" name ="phone_no" class="form-control" id="phone_no" required/>
 		</div>
 	</div>
 	<div class="form-group">

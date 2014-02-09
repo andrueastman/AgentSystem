@@ -21,17 +21,17 @@
 									<i class="fa fa-comments fa-5x"></i>
 								  </div>
 								  <div class="col-xs-6 text-right">
-									<p class="announcement-heading">456</p>
-									<p class="announcement-text">Messages</p>
+									<p class="announcement-heading"><?php echo $unread_orders;?></p>
+									<p class="announcement-text">Orders with comments</p>
 								  </div>
 								</div>
 							  </div>
 							  
-							  <a href="#">
+							  <a href="<?php echo site_url('agent/order/get_orders_with_comments');?>">
 								<div class="panel-footer announcement-bottom">
 								  <div class="row">
 									<div class="col-xs-6">
-									  View Messages 
+									  View the orders with comments 
 									</div>
 									<div class="col-xs-6 text-right">
 									  <i class="fa fa-arrow-circle-right"></i>

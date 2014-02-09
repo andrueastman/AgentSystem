@@ -18,13 +18,13 @@
 	<div class="form-group">
 		<label for ="first_name" class="col-sm-2 control-label">First Name</label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" name ="first_name" id="first_name"/>
+			<input type="text" class="form-control" name ="first_name" id="first_name" required/>
 			</div>
 	</div>
 	<div class="form-group">
 		<label for ="last_name" class="col-sm-2 control-label">Last Name</label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" name ="last_name" id="last_name"/>
+			<input type="text" class="form-control" name ="last_name" id="last_name" required/>
 			</div>
 	</div>
 	<div class="form-group">

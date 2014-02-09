@@ -53,7 +53,7 @@ class Receipt_Model extends CI_Model{
 		return $this->db->get()->result_array();
 	}
 	public function receipt_exists($receipt_id){
-		$this->db->select()->form()->where();
+		$this->db->select('*')->from('receipts')->where('id',$receipt_id);
 		$result = $this->db->get();
 		if($result->num_rows() == 1)
 			return TRUE;

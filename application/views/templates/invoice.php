@@ -69,10 +69,8 @@
 			<br/>
 			<br/>
 			<div id="invoice_other">
-			<br/>
-			<br/>
-				<p id="payment-terms">Payment Terms: 30 days</p> 
-				<p id="payment-due">Payment due by <?php echo $date_due;?></p> 
+				<p id="payment-terms"><h2><u>Payment Terms:</u></h2> </p> 
+				<p id="payment-due">We shall start working on our order only if at least 50% of total has been paid</p> 
 				<p id="payment-total"><?php echo 'Kshs.' .$total;?></p>
 				<!--<h2>Other Information</h2>
 				<p>This is other information</p>-->
