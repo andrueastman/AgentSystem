@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `ujamaa` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `ujamaa`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: ujamaa
@@ -115,7 +113,7 @@ CREATE TABLE `commentlist` (
   `commentid` int(11) NOT NULL,
   `UserId` int(10) unsigned NOT NULL,
   `Comment` varchar(300) NOT NULL,
-  `Time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `OrderID` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_Order_idx` (`commentid`),
@@ -352,7 +350,7 @@ CREATE TABLE `receipts` (
   `ref_no` varchar(45) DEFAULT NULL,
   `receipient_id` int(10) unsigned DEFAULT NULL,
   `confirmed` tinyint(4) DEFAULT '0',
-  `date_paid` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date_paid` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `FK_payment_type_idx` (`type`),
   KEY `FK_receipient_idx` (`receipient_id`),
